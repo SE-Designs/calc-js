@@ -1,0 +1,2582 @@
+<!-- Калькулятор -->
+<link rel="stylesheet" href="/libs/css/styles.css"><div class="page-wrapper">
+<link rel="stylesheet" href="/libs/css/new_styles.css">
+	<div class="container" style="max-width:992px">
+		<!--<h2 class="pageTitle">Популярные размеры</h2>
+		<div class="row">
+			<div class="col">-->
+				<form method="POST" enctype="multipart/form-data" id="calculator_form" class="order" >
+					<div class="row">
+						<div class="col-12 col-xs-6 col-md-6 col-lg-4">
+							<div class="order-block size clearfix" id="testsize">
+								<h3 class="order-block__title">Размер (см)<!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></h3>
+								<label for="s30x40" class="size__label"><input type="radio" class="size__radio" name="size" value="30x40" id="s30x40" checked><i></i><span>30x40</span></label>
+								<label for="s40x40" class="size__label"><input type="radio" class="size__radio" name="size" value="40x40" id="s40x40"><i></i><span>40x40</span></label>
+								<label for="s40x50" class="size__label"><input type="radio" class="size__radio" name="size" value="40x50" id="s40x50"><i></i><span>40x50</span></label>
+								<label for="s40x60" class="size__label"><input type="radio" class="size__radio" name="size" value="40x60" id="s40x60"><i></i><span>40x60</span></label>
+								<label for="s50x50" class="size__label"><input type="radio" class="size__radio" name="size" value="50x50" id="s50x50"><i></i><span>50x50</span></label>
+								<label for="s50x60" class="size__label"><input type="radio" class="size__radio" name="size" value="50x60" id="s50x60"><i></i><span>50x60</span></label>
+								<label for="s50x70" class="size__label"><input type="radio" class="size__radio" name="size" value="50x70" id="s50x70"><i></i><span>50x70</span></label>
+								<label for="s60x60" class="size__label"><input type="radio" class="size__radio" name="size" value="60x60" id="s60x60"><i></i><span>60x60</span></label>
+								<label for="s60x80" class="size__label"><input type="radio" class="size__radio" name="size" value="60x80" id="s60x80"><i></i><span>60x80</span></label>
+								<label for="s60x90" class="size__label"><input type="radio" class="size__radio" name="size" value="60x90" id="s60x90"><i></i><span>60x90</span></label>
+								<label for="s70x70" class="size__label"><input type="radio" class="size__radio" name="size" value="70x70" id="s70x70"><i></i><span>70x70</span></label>
+								<label for="s70x90" class="size__label"><input type="radio" class="size__radio" name="size" value="70x90" id="s70x90"><i></i><span>70x90</span></label>
+								<label for="s70x100" class="size__label"><input type="radio" class="size__radio" name="size" value="70x100" id="s70x100"><i></i><span>70x100</span></label>
+								<label for="s80x80" class="size__label"><input type="radio" class="size__radio" name="size" value="80x80" id="s80x80"><i></i><span>80x80</span></label>
+								<label for="s80x100" class="size__label"><input type="radio" class="size__radio" name="size" value="80x100" id="s80x100"><i></i><span>80x100</span></label>
+								<label for="s80x110" class="size__label"><input type="radio" class="size__radio" name="size" value="80x110" id="s80x110"><i></i><span>80x110</span></label>
+								<label for="s90x90" class="size__label"><input type="radio" class="size__radio" name="size" value="90x90" id="s90x90"><i></i><span>90x90</span></label>
+								<!--<label for="s90x110" class="size__label"><input type="radio" class="size__radio" name="size" value="90x110" id="s90x110"><i></i><span>90x110</span></label>-->
+								<label for="s90x120" class="size__label"><input type="radio" class="size__radio" name="size" value="90x120" id="s90x120"><i></i><span>90x120</span></label>
+								<div class="order-block stretcher own">
+									<label for="size__optional" class="size__label"><input type="radio" class="size__radio" name="size" value="optional" id="size__optional"><i></i><span>Свой</span></label>
+									<label class="size__label"><input type="number" class="size__number" min='0' max="150" value="30" name="width"><span class="icon-x">X</span></label>
+									<label class="size__label"><input type="number" class="size__number" min='0' max="150" value="20" name="height"></label>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="col-12  col-xs-6 col-md-6 col-lg-4" id="printType">
+							<div class="order-block stretcher typer">
+								<h3 class="order-block__title">Выберите материал<!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></h3>
+								<label for="noNeed" class="material__label"><input type="radio" class="material__radio" name="print" id="noNeed" checked value="0"><i></i><span>Печать не требуется</span></label>
+								<label for="vinyl" class="material__label"><input type="radio" class="material__radio" name="print" id="vinyl" value="фотобумага"><i></i><span>Фотобумага</span></label>
+								<label for="canvas" class="material__label"><input type="radio" class="material__radio" name="print" id="canvas" value="холст"><i></i><span>Печать на холсте</span></label>
+								<label for="mirror" class="material__label"><input type="radio" class="material__radio" name="print" id="mirror" value="зеркало"><i></i><span>Зеркало</span></label>
+								<label for="painting" class="material__label"><input type="radio" class="material__radio" name="print" id="painting" value="рисование"><i></i><span>Холст для рисования</span></label>
+							</div>
+							<!--<div class="order-block stretcher" id="podramnic" style="display: none;">-->
+							<div class="order-block stretcher" id="additionals">
+								<div  id="podramnic" >
+									<!--<h3 class="order-block__title">Подрамник<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span></h3>-->
+									<label for="thin" class="stretcher__label"><input type="radio" class="stretcher__radio" name="stretcher" id="thin" checked value="1.5"><i></i><span>Подрамник 1,5 см</span></label>
+									<label for="fat" class="stretcher__label"><input type="radio" class="stretcher__radio" name="stretcher" id="fat" value="3"><i></i><span>Подрамник 3 см</span></label>
+									<label for="none" class="stretcher__label"><input type="radio" class="stretcher__radio" name="stretcher" id="none" value="0"><i></i><span>Без подрамника</span></label>
+								</div>
+								<div class="checkbox-list" id="no_print">
+									<label for="stretcher__glass" class="checkbox-list__label"><input type="checkbox" class="stretcher__checkbox" id="stretcher__glass" name="glass" value="Стекло"><i></i><span>Стекло</span><!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></label>
+									<label for="stretcher__backdrop" class="checkbox-list__label"><input type="checkbox" class="stretcher__checkbox" id="stretcher__backdrop" name="backdrop" value="Задник"><i></i><span>Задник<!--</span><span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></label>
+									<br>
+								</div>
+								<div class="checkbox-list" id="varnish">
+									<label for="stretcher__lak" class="checkbox-list__label"><input type="checkbox" class="stretcher__checkbox" id="stretcher__lak" name="lak" value="Покрытие лаком"><i></i><span>Покрытие лаком<!--</span><span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></label>
+									<br>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-xs-12 col-md-6 col-lg-4">
+							<div class="imgBox materialPreview">
+								<img src="/preview/nothing.jpg" alt="">
+								<p>Пример материала <span class="for-print">для печати</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-5" id="preview-div">
+						
+							<div class="order-block design">
+								<label class="preview-div_label">
+									<h3 class="order-block__title">Изображение для печати<!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></h3>
+									<span class="button">Загрузить изображение <i>⤓</i></span>
+									<input type="file" multiple accept="image/jpeg,image/png" size="20" name="calc_file[]" class="design__file">
+								</label>
+								<a href="javascript:void(0);" class="rotate rotate_left">
+									↶ поворот влево
+								</a>
+								
+								<a href="javascript:void(0);" class="rotate rotate_right">
+									поворот вправо ↷
+								</a>
+							</div>
+							<div class="outerPreview" id="print_image">
+								<div class="paspartu">
+									<div class="borderWrapper">
+										<div class="l_b_ov">
+											<div class="l_b"></div>
+										</div>
+										<div class="t_b"></div>
+										<div class="r_b_ov">
+											<div class="r_b"></div>
+										</div>
+										<div class="b_b"></div>
+									</div>
+								</div>
+								<div class="border">
+									<div class="borderWrapper">
+										<div class="l_b_ov">
+											<div class="l_b"></div>
+										</div>
+										<div class="t_b"></div>
+										<div class="r_b_ov">
+											<div class="r_b"></div>
+										</div>
+										<div class="b_b"></div>
+									</div>
+								</div>
+								<div class="productPreview">
+								</div>
+							</div>
+							<div class="row justify-content-between">
+								<!--<a id="printing" href="javascript:void(0);" class="button download col-lg-5"><i class="fas fa-download"></i> Скачать</a>-->
+								<a href="javascript:void(0);" class="button reset col-lg-5"><i class="far fa-trash-alt"></i> Сброс</a>
+							</div>
+						</div>
+						<div class="col-lg-7 filterWrapper">
+							<div class="row align-items-center">
+								<h2 class="order-block__title chooseTitle col-lg-8">Выберите багет</h2>
+								<a href="javascript:void(0);" class="button removeBagetButton col-lg-4">
+									<label for='baget0'>
+										<input type="radio" value="0" id="baget0" name="baget" class="material__radio">	
+										Убрать багет
+									</label>
+								</a>
+							</div>
+							<p>Сортировать по ширине багета (мм.)</p>
+							<div id="baget_filter">
+								<a href="javascript:void(0);" class="btn btn-light" data-width="20">20</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="30">30</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="40">40</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="50">50</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="60">60</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="70">70</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="80">80</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="90">90</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="100">100</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="110">110</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="120">120</a>
+								<a href="javascript:void(0);" class="btn btn-light" data-width="0">все</a>
+							</div>
+							<!-- Список багетов -->
+							<div class="bagetWrapper">
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.11, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.11.jpg" alt="">
+											</div>
+											<p>120.2114.11</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.08, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.08.jpg" alt="">
+											</div>
+											<p>120.2114.08</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.01, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.01.jpg" alt="">
+											</div>
+											<p>120.2114.01</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.88, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.88.jpg" alt="">
+											</div>
+											<p>120.2114.88</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.21, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.21.jpg" alt="">
+											</div>
+											<p>120.2114.21</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.28, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.28.jpg" alt="">
+											</div>
+											<p>120.2114.28</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.31, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.31.jpg" alt="">
+											</div>
+											<p>120.2114.31</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.92, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.92.jpg" alt="">
+											</div>
+											<p>120.2114.92</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="120.2114.99, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/120.2114.99.jpg" alt="">
+											</div>
+											<p>120.2114.99</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.22, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.22.jpg" alt="">
+											</div>
+											<p>27.2016.22</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.33, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.33.jpg" alt="">
+											</div>
+											<p>27.2016.33</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.66, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.66.jpg" alt="">
+											</div>
+											<p>27.2016.66</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.74, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.74.jpg" alt="">
+											</div>
+											<p>27.2016.74</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.77, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.77.jpg" alt="">
+											</div>
+											<p>27.2016.77</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.88, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.88.jpg" alt="">
+											</div>
+											<p>27.2016.88</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.11, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.11.jpg" alt="">
+											</div>
+											<p>27.2016.11</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2230">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="27.2016.12, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/27.2016.12.jpg" alt="">
+											</div>
+											<p>27.2016.12</p>
+											<p>20 мм</p>
+											<p>2230 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="3095">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="69.2030.98, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/69.2030.98.jpg" alt="">
+											</div>
+											<p>69.2030.98</p>
+											<p>20 мм</p>
+											<p>3095 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="4550">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="24.2030.11, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/24.2030.11.jpg" alt="">
+											</div>
+											<p>24.2030.11</p>
+											<p>20 мм</p>
+											<p>4550 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="4550">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="24.2030.99, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/24.2030.99.jpg" alt="">
+											</div>
+											<p>24.2030.99</p>
+											<p>20 мм</p>
+											<p>4550 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="4550">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="24.2030.33, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/24.2030.33.jpg" alt="">
+											</div>
+											<p>24.2030.33</p>
+											<p>20 мм</p>
+											<p>4550 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="4550">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="24.2030.28, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/24.2030.28.jpg" alt="">
+											</div>
+											<p>24.2030.28</p>
+											<p>20 мм</p>
+											<p>4550 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.10, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.10.jpg" alt="">
+											</div>
+											<p>67.2621.10</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.11, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.11.jpg" alt="">
+											</div>
+											<p>67.2621.11</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.34, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.34.jpg" alt="">
+											</div>
+											<p>67.2621.34</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.44, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.44.jpg" alt="">
+											</div>
+											<p>67.2621.44</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.72, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.72.jpg" alt="">
+											</div>
+											<p>67.2621.72</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.88, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.88.jpg" alt="">
+											</div>
+											<p>67.2621.88</p>
+											<p>26 мм</p>
+											<p>3100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="3100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="67.2621.22, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/67.2621.22.jpg" alt="">
+											</div>
+											<p>67.2621.22</p>
+											<p>26 мм</p>
+											<p>1840 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2660">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="29.2222.18, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/29.2222.18.jpg" alt="">
+											</div>
+											<p>29.2222.18</p>
+											<p>22 мм</p>
+											<p>2660 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2660">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="29.2222.31, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/29.2222.31.jpg" alt="">
+											</div>
+											<p>29.2222.31</p>
+											<p>22 мм</p>
+											<p>2660 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2660">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="29.2222.82, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/29.2222.82.jpg" alt="">
+											</div>
+											<p>29.2222.82</p>
+											<p>22 мм</p>
+											<p>2660 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2660">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="29.2222.88, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/29.2222.88.jpg" alt="">
+											</div>
+											<p>29.2222.88</p>
+											<p>22 мм</p>
+											<p>2660 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2660">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="29.2222.92, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/29.2222.92.jpg" alt="">
+											</div>
+											<p>29.2222.92</p>
+											<p>22 мм</p>
+											<p>2660 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="114.2215.13, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/114.2215.13.jpg" alt="">
+											</div>
+											<p>114.2215.13</p>
+											<p>22 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="114.2215.29, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/114.2215.29.jpg" alt="">
+											</div>
+											<p>114.2215.29</p>
+											<p>22 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="114.2215.18, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/114.2215.18.jpg" alt="">
+											</div>
+											<p>114.2215.18</p>
+											<p>22 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="114.2215.11, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/114.2215.11.jpg" alt="">
+											</div>
+											<p>114.2215.11</p>
+											<p>22 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="114.2215.81, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/114.2215.81.jpg" alt="">
+											</div>
+											<p>114.2215.81</p>
+											<p>22 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="23" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="72.2424.08, 23 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/72.2424.08.jpg" alt="">
+											</div>
+											<p>72.2424.08</p>
+											<p>23 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="23" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="72.2424.61, 23 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/72.2424.61.jpg" alt="">
+											</div>
+											<p>72.2424.61</p>
+											<p>23 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="23" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="72.2424.81, 23 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/72.2424.81.jpg" alt="">
+											</div>
+											<p>72.2424.81</p>
+											<p>23 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="23" data-price="2100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="72.2424.32, 23 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/72.2424.32.jpg" alt="">
+											</div>
+											<p>72.2424.32</p>
+											<p>23 мм</p>
+											<p>2100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="3320">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="138.2422.11, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/138.2422.11.jpg" alt="">
+											</div>
+											<p>138.2422.11</p>
+											<p>25 мм</p>
+											<p>3320 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="3320">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="138.2422.73, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/138.2422.73.jpg" alt="">
+											</div>
+											<p>138.2422.73</p>
+											<p>25 мм</p>
+											<p>3320 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="3320">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="138.2422.77, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/138.2422.77.jpg" alt="">
+											</div>
+											<p>138.2422.77</p>
+											<p>25 мм</p>
+											<p>3320 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="3320">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="138.2422.91, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/138.2422.91.jpg" alt="">
+											</div>
+											<p>138.2422.91</p>
+											<p>25 мм</p>
+											<p>3320 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2980">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="45.2622.80, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/45.2622.80.jpg" alt="">
+											</div>
+											<p>45.2622.80</p>
+											<p>26 мм</p>
+											<p>2980 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2980">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="45.2622.14, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/45.2622.14.jpg" alt="">
+											</div>
+											<p>45.2622.14</p>
+											<p>26 мм</p>
+											<p>2980 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2980">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="45.2622.42, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/45.2622.42.jpg" alt="">
+											</div>
+											<p>45.2622.42</p>
+											<p>26 мм</p>
+											<p>2980 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="68.2624.89, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/68.2624.89.jpg" alt="">
+											</div>
+											<p>68.2624.89</p>
+											<p>26 мм</p>
+											<p>2900 тг/м</p>
+										</label>
+									</a>
+								</div>
+
+<div class="baget__item" data-baget-width="26" data-price="2900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="68.2624.81, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/68.2624.81.jpg" alt="">
+											</div>
+											<p>68.2624.81</p>
+											<p>26 мм</p>
+											<p>2900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="68.2624.99, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/68.2624.99.jpg" alt="">
+											</div>
+											<p>68.2624.99</p>
+											<p>26 мм</p>
+											<p>2900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="68.2624.33, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/68.2624.33.jpg" alt="">
+											</div>
+											<p>68.2624.33</p>
+											<p>26 мм</p>
+											<p>2900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="68.2624.97, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/68.2624.97.jpg" alt="">
+											</div>
+											<p>68.2624.97</p>
+											<p>26 мм</p>
+											<p>2900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="101.2621.18, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/101.2621.18.jpg" alt="">
+											</div>
+											<p>101.2621.18</p>
+											<p>26 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="101.2621.14, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/101.2621.14.jpg" alt="">
+											</div>
+											<p>101.2621.14</p>
+											<p>26 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="101.2621.88, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/101.2621.88.jpg" alt="">
+											</div>
+											<p>101.2621.88</p>
+											<p>26 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="101.2621.83, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/101.2621.83.jpg" alt="">
+											</div>
+											<p>101.2621.83</p>
+											<p>26 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="26" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="101.2621.81, 26 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/101.2621.81.jpg" alt="">
+											</div>
+											<p>101.2621.81</p>
+											<p>26 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.15, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.15.jpg" alt="">
+											</div>
+											<p>102.2918.15</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.16, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.16.jpg" alt="">
+											</div>
+											<p>102.2918.16</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.17, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.17.jpg" alt="">
+											</div>
+											<p>102.2918.17</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.11, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.11.jpg" alt="">
+											</div>
+											<p>102.2918.11</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.13, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.13.jpg" alt="">
+											</div>
+											<p>102.2918.13</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="28" data-price="1875">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="102.2918.29, 28 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/102.2918.29.jpg" alt="">
+											</div>
+											<p>102.2918.29</p>
+											<p>28 мм</p>
+											<p>1875 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="29" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="153.3018.16, 29 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/153.3018.16.jpg" alt="">
+											</div>
+											<p>153.3018.16</p>
+											<p>29 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="29" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="153.3018.11, 29 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/153.3018.11.jpg" alt="">
+											</div>
+											<p>153.3018.11</p>
+											<p>29 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="29" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="153.3018.14, 29 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/153.3018.14.jpg" alt="">
+											</div>
+											<p>153.3018.14</p>
+											<p>29 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="29" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="153.3018.18, 29 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/153.3018.18.jpg" alt="">
+											</div>
+											<p>153.3018.18</p>
+											<p>29 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="29" data-price="2400">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="153.3018.17, 29 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/153.3018.17.jpg" alt="">
+											</div>
+											<p>153.3018.17</p>
+											<p>29 мм</p>
+											<p>2400 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.77, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.77.jpg" alt="">
+											</div>
+											<p>31.3020.77</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.92, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.92.jpg" alt="">
+											</div>
+											<p>31.3020.92</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.44, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.44.jpg" alt="">
+											</div>
+											<p>31.3020.44</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.33, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.33.jpg" alt="">
+											</div>
+											<p>31.3020.33</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.22, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.22.jpg" alt="">
+											</div>
+											<p>31.3020.22</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="30" data-price="2700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="31.3020.27, 30 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/31.3020.27.jpg" alt="">
+											</div>
+											<p>31.3020.27</p>
+											<p>30 мм</p>
+											<p>2700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3410">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="119.3215.32, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/119.3215.32.jpg" alt="">
+											</div>
+											<p>119.3215.32</p>
+											<p>31 мм</p>
+											<p>3410 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3410">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="119.3215.88, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/119.3215.88.jpg" alt="">
+											</div>
+											<p>119.3215.88</p>
+											<p>31 мм</p>
+											<p>3410 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3410">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="119.3215.92, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/119.3215.92.jpg" alt="">
+											</div>
+											<p>119.3215.92</p>
+											<p>31 мм</p>
+											<p>3410 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.04, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.04.jpg" alt="">
+											</div>
+											<p>85.3128.04</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.77, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.77.jpg" alt="">
+											</div>
+											<p>85.3128.77</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.33, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.33.jpg" alt="">
+											</div>
+											<p>85.3128.33</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.71, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.71.jpg" alt="">
+											</div>
+											<p>85.3128.71</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.11, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.11.jpg" alt="">
+											</div>
+											<p>85.3128.11</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.66, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.66.jpg" alt="">
+											</div>
+											<p>85.3128.66</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="31" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="85.3128.55, 31 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/85.3128.55.jpg" alt="">
+											</div>
+											<p>85.3128.55</p>
+											<p>31 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.10, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.10.jpg" alt="">
+											</div>
+											<p>118.3219.10</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.22, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.22.jpg" alt="">
+											</div>
+											<p>118.3219.22</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.29, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.29.jpg" alt="">
+											</div>
+											<p>118.3219.29</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.33, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.33.jpg" alt="">
+											</div>
+											<p>118.3219.33</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.77, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.77.jpg" alt="">
+											</div>
+											<p>118.3219.77</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="3500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="118.3219.92, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/118.3219.92.jpg" alt="">
+											</div>
+											<p>118.3219.92</p>
+											<p>32 мм</p>
+											<p>3500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.10, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.10.jpg" alt="">
+											</div>
+											<p>48.3221.10</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.11, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.11.jpg" alt="">
+											</div>
+											<p>48.3221.11</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.24, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.24.jpg" alt="">
+											</div>
+											<p>48.3221.24</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.33, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.33.jpg" alt="">
+											</div>
+											<p>48.3221.33</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.77, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.77.jpg" alt="">
+											</div>
+											<p>48.3221.77</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.78, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.78.jpg" alt="">
+											</div>
+											<p>48.3221.78</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.80, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.80.jpg" alt="">
+											</div>
+											<p>48.3221.80</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="32" data-price="2850">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="48.3221.88, 32 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/48.3221.88.jpg" alt="">
+											</div>
+											<p>48.3221.88</p>
+											<p>32 мм</p>
+											<p>2850 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="33" data-price="3700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="156.3423.30, 33 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/156.3423.30.jpg" alt="">
+											</div>
+											<p>156.3423.30</p>
+											<p>33 мм</p>
+											<p>3700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="33" data-price="3700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="156.3423.77, 33 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/156.3423.77.jpg" alt="">
+											</div>
+											<p>156.3423.77</p>
+											<p>33 мм</p>
+											<p>3700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="33" data-price="3700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="156.3423.11, 33 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/156.3423.11.jpg" alt="">
+											</div>
+											<p>156.3423.11</p>
+											<p>33 мм</p>
+											<p>3700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="33" data-price="3700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="156.3423.14, 33 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/156.3423.14.jpg" alt="">
+											</div>
+											<p>156.3423.14</p>
+											<p>33 мм</p>
+											<p>3700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="33" data-price="3700">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="156.3423.16, 33 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/156.3423.16.jpg" alt="">
+											</div>
+											<p>156.3423.16</p>
+											<p>33 мм</p>
+											<p>3700 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.24, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.24.jpg" alt="">
+											</div>
+											<p>148.3525.24</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.11, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.11.jpg" alt="">
+											</div>
+											<p>148.3525.11</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.18, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.18.jpg" alt="">
+											</div>
+											<p>148.3525.18</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.23, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.23.jpg" alt="">
+											</div>
+											<p>148.3525.23</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.26, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.26.jpg" alt="">
+											</div>
+											<p>148.3525.26</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.29, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.29.jpg" alt="">
+											</div>
+											<p>148.3525.29</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="35" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="148.3525.62, 35 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/148.3525.62.jpg" alt="">
+											</div>
+											<p>148.3525.62</p>
+											<p>35 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="36" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="91.3629.01, 36 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/91.3629.01.jpg" alt="">
+											</div>
+											<p>91.3629.01</p>
+											<p>36 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="36" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="91.3629.11, 36 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/91.3629.11.jpg" alt="">
+											</div>
+											<p>91.3629.11</p>
+											<p>36 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="36" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="91.3629.81, 36 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/91.3629.81.jpg" alt="">
+											</div>
+											<p>91.3629.81</p>
+											<p>36 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="36" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="91.3629.61, 36 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/91.3629.61.jpg" alt="">
+											</div>
+											<p>91.3629.61</p>
+											<p>36 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="36" data-price="3900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="91.3629.12, 36 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/91.3629.12.jpg" alt="">
+											</div>
+											<p>91.3629.12</p>
+											<p>36 мм</p>
+											<p>3900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.41, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.41.jpg" alt="">
+											</div>
+											<p>155.4027.41</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.81, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.81.jpg" alt="">
+											</div>
+											<p>155.4027.81</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.18, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.18.jpg" alt="">
+											</div>
+											<p>155.4027.18</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.16, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.16.jpg" alt="">
+											</div>
+											<p>155.4027.16</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.15, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.15.jpg" alt="">
+											</div>
+											<p>155.4027.15</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="40" data-price="5100">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="155.4027.17, 40 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/155.4027.17.jpg" alt="">
+											</div>
+											<p>155.4027.17</p>
+											<p>40 мм</p>
+											<p>5100 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="51.4323.81, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/51.4323.81.jpg" alt="">
+											</div>
+											<p>51.4323.81</p>
+											<p>44 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="51.4323.32, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/51.4323.32.jpg" alt="">
+											</div>
+											<p>51.4323.32</p>
+											<p>44 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="51.4323.29, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/51.4323.29.jpg" alt="">
+											</div>
+											<p>51.4323.29</p>
+											<p>44 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4200">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="51.4323.23, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/51.4323.23.jpg" alt="">
+											</div>
+											<p>51.4323.23</p>
+											<p>44 мм</p>
+											<p>4200 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="111.4423.81, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/111.4423.81.jpg" alt="">
+											</div>
+											<p>111.4423.81</p>
+											<p>44 мм</p>
+											<p>4500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="111.4423.22, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/111.4423.22.jpg" alt="">
+											</div>
+											<p>111.4423.22</p>
+											<p>44 мм</p>
+											<p>4500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="111.4423.18, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/111.4423.18.jpg" alt="">
+											</div>
+											<p>111.4423.18</p>
+											<p>44 мм</p>
+											<p>4500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="44" data-price="4500">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="111.4423.33, 44 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/111.4423.33.jpg" alt="">
+											</div>
+											<p>111.4423.33</p>
+											<p>44 мм</p>
+											<p>4500 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="56" data-price="6300">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="56.5624.61, 56 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/56.5624.61.jpg" alt="">
+											</div>
+											<p>56.5624.61</p>
+											<p>56 мм</p>
+											<p>6300 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="56" data-price="6300">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="56.5624.81, 56 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/56.5624.81.jpg" alt="">
+											</div>
+											<p>56.5624.81</p>
+											<p>56 мм</p>
+											<p>6300 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="59" data-price="5800">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="36.5825.11, 59 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/36.5825.11.jpg" alt="">
+											</div>
+											<p>36.5825.11</p>
+											<p>59 мм</p>
+											<p>5800 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="59" data-price="5800">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="36.5825.33, 59 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/36.5825.33.jpg" alt="">
+											</div>
+											<p>36.5825.33</p>
+											<p>59 мм</p>
+											<p>5800 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="59" data-price="5800">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="36.5825.82, 59 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/36.5825.82.jpg" alt="">
+											</div>
+											<p>36.5825.82</p>
+											<p>59 мм</p>
+											<p>5800 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="59" data-price="5800">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="36.5825.92, 59 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/36.5825.92.jpg" alt="">
+											</div>
+											<p>36.5825.92</p>
+											<p>59 мм</p>
+											<p>5800 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="45" data-price="4455">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="676044, 45 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/676044.jpg" alt="">
+											</div>
+											<p>676044</p>
+											<p>45 мм</p>
+											<p>4455 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="45" data-price="4455">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="676051, 45 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/676051.jpg" alt="">
+											</div>
+											<p>676051</p>
+											<p>45 мм</p>
+											<p>4455 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="45" data-price="4455">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="676052, 45 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/676052.jpg" alt="">
+											</div>
+											<p>676052</p>
+											<p>45 мм</p>
+											<p>4455 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="50" data-price="4900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659433, 50 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659433.jpg" alt="">
+											</div>
+											<p>659433</p>
+											<p>50 мм</p>
+											<p>4900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="50" data-price="4900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659434, 50 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659434.jpg" alt="">
+											</div>
+											<p>659434</p>
+											<p>50 мм</p>
+											<p>4900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="50" data-price="4900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659435, 50 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659435.jpg" alt="">
+											</div>
+											<p>659435</p>
+											<p>50 мм</p>
+											<p>4900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="50" data-price="4900">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659436, 50 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659436.jpg" alt="">
+											</div>
+											<p>659436</p>
+											<p>50 мм</p>
+											<p>4900 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="627319, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/627319.jpg" alt="">
+											</div>
+											<p>627319</p>
+											<p>25 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="627320, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/627320.jpg" alt="">
+											</div>
+											<p>627320</p>
+											<p>25 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="18" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="119411, 18 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/119411.jpg" alt="">
+											</div>
+											<p>119411</p>
+											<p>18 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="18" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="127319, 18 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/127319.jpg" alt="">
+											</div>
+											<p>127319</p>
+											<p>18 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="115.2322.66, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/115.2322.66.jpg" alt="">
+											</div>
+											<p>115.2322.66</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="115.2322.55, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/115.2322.55.jpg" alt="">
+											</div>
+											<p>115.2322.55</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="115.2322.11, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/115.2322.11.jpg" alt="">
+											</div>
+											<p>115.2322.11</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="115.2322.33, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/115.2322.33.jpg" alt="">
+											</div>
+											<p>115.2322.33</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="115.2322.44, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/115.2322.44.jpg" alt="">
+											</div>
+											<p>115.2322.44</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="127321, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/127321.jpg" alt="">
+											</div>
+											<p>127321</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="136527, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/136527.jpg" alt="">
+											</div>
+											<p>136527</p>
+											<p>25 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="136529, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/136529.jpg" alt="">
+											</div>
+											<p>136529</p>
+											<p>25 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="25" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="136530, 25 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/136530.jpg" alt="">
+											</div>
+											<p>136530</p>
+											<p>25 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="628057, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/628057.jpg" alt="">
+											</div>
+											<p>628057</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="628058, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/628058.jpg" alt="">
+											</div>
+											<p>628058</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="628059, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/628059.jpg" alt="">
+											</div>
+											<p>628059</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="22" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="628061, 22 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/628061.jpg" alt="">
+											</div>
+											<p>628061</p>
+											<p>22 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659655, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659655.jpg" alt="">
+											</div>
+											<p>659655</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659656, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659656.jpg" alt="">
+											</div>
+											<p>659656</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+<div class="baget__item" data-baget-width="20" data-price="2150">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="659657, 20 мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/659657.jpg" alt="">
+											</div>
+											<p>659657</p>
+											<p>20 мм</p>
+											<p>2150 тг/м</p>
+										</label>
+									</a>
+								</div>
+
+								<!-- Новые багеты -->
+								
+								
+								<!--
+								<div class="baget__item" data-baget-width="!Size!" data-price="!BagetPrice!">
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="!Baget Name!, !Size! мм" name="baget" class="material__radio">
+											<div class="bagetImg">
+												<img src="bagets/!image_name!.jpg" alt="">
+											</div>
+											<p>!Baget Name!</p>
+											<p>!Size! мм</p>
+											<p>!BagetPrice! тг/м</p>
+										</label>
+									</a>
+								</div>
+								-->
+							</div>
+							<div class="row align-items-center" id="paspartu_title">
+								<h2 class="order-block__title chooseTitle col-lg-8">Выберите паспарту (цветной картон для оформления) (мм)</h2>
+								<a href="javascript:void(0)" class="button removePaspartuButton col-lg-4">
+									<label>
+										<input type="radio" value="0" name="paspartu" class="material__radio">
+										Убрать паспарту
+									</label>
+								</a>
+							</div>
+							<div class="row" id="paspartu_size" class = "paspartu__item">
+									<label class="col-md-3 paspartu_size_label">
+											Справа и слева
+											<input type="number" class="paspartu__number" min='20' max="250" value="0" name="paspartu_width">
+									</label>
+									<label class="col-md-3 paspartu_size_label">
+											Сверху и снизу
+											<input type="number" class="paspartu__number" min='20' max="250" value="0" name="paspartu_height">
+									</label>
+									<div class="col">
+										<label class="col paspartu_button">
+												<input type="button" class="button" id="paspartu_minus" value="Уже" name="paspartu_button">
+										</label>
+										<label class="col paspartu_button">
+												<!--<input type="button" class="button" value="Авто" name="paspartu_button">-->
+												<input type="button" class="button" id="paspartu_add" value="Шире" name="paspartu_button">
+										</label>
+									</div>
+							</div>
+							<!-- Список паспарту -->
+							<div class="paspartuWrapper" id="paspartu_selector">
+								<div class="paspartu__item active"><!-- data-paspartu-width="25"--> 
+									<a href="javascript:void(0);" class="active">
+										<label>
+											<input type="radio" checked value="8025" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8025.jpg" alt="">
+											</div>
+											<p>8025</p>
+										</label>
+									</a>
+								</div>
+								<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8050" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8050.jpg" alt="">
+											</div>
+											<p>8050</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8068" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8068.jpg" alt="">
+											</div>
+											<p>8068</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8247" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8247.jpg" alt="">
+											</div>
+											<p>8247</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8071" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8071.jpg" alt="">
+											</div>
+											<p>8071</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8175" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8175.jpg" alt="">
+											</div>
+											<p>8175</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8163" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8163.jpg" alt="">
+											</div>
+											<p>8163</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8052" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8052.jpg" alt="">
+											</div>
+											<p>8052</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8063" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8063.jpg" alt="">
+											</div>
+											<p>8063</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8109" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8109.jpg" alt="">
+											</div>
+											<p>8109</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8031" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8031.jpg" alt="">
+											</div>
+											<p>8031</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="7015" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/7015.jpg" alt="">
+											</div>
+											<p>7015</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="7016" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/7016.jpg" alt="">
+											</div>
+											<p>7016</p>
+										</label>
+									</a>
+								</div>
+<div class="paspartu__item" ><!--data-paspartu-width="30"-->
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="8060" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/8060.jpg" alt="">
+											</div>
+											<p>8060</p>
+										</label>
+									</a>
+								</div>
+								<!-- Новые паспарту -->
+								
+								
+								<!--
+								<div class="paspartu__item" >
+									<a href="javascript:void(0);">
+										<label>
+											<input type="radio" value="!Paspartu Name!" name="paspartu" class="material__radio" class="material__radio">
+											<div class="paspartuImg">
+												<img src="paspartu/!image_name!.jpg" alt="">
+											</div>
+											<p>!Paspartu Name!</p>
+										</label>
+									</a>
+								</div>
+								-->
+							</div>
+					</div>
+
+					<div class="row">
+						<div class="d-none d-md-block col-md-6">
+						</div>
+						<div class="col-12 col-md-6">
+   							<label for="stretcher__surp" class="checkbox-list__label preseentLabel"><input type="checkbox" class="stretcher__checkbox" id="stretcher__surp" name="present" value="Подарочная упаковка"><i></i><span>Подарочная упаковка</span><!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="customer" style="margin-top:77px;">
+								<label for="name" class="customer__label">Ваше имя:</label>
+								<input type="text" class="name" id="name" required>
+								<label for="phone" class="customer__label">Телефон:</label>
+								<input type="tel" class="phone" id="phone" required>		
+							</div>
+							<!--<div class="price">
+								<p class="price__text"><span id="num">!!!</span> тенге</p>
+							</div>-->
+						</div>
+						<div class="col-lg-8">
+							<h2 class="order-block__title chooseTitle">Выберите срок изготовления</h2>
+							<label for="standart" class="deadline__label"><input type="radio" class="deadline__radio" name="deadline" id="standart" checked="checked" value="standart"><i></i><span>Стадартный: 1 -2 дня</span></label>
+							<label for="fast" class="deadline__label"><input type="radio" class="deadline__radio" name="deadline" id="fast" value="fast"><i></i><span>Срочный 3 - 5 часов</span></label>
+							<label  class="deadline__label"><input type="radio" class="deadline__radio" name="deadline" id="own_deadine" value="own"><i></i><span>До:</span></label>
+							<div class="row justify-content-end">
+								<!--<label for="calculator" class="customer__label">До: Выберите дату</label>-->
+								<input type="date" id="calculator" class="date" name="date" plaseholder="выберите дату" style="width: 190px;" />
+								
+							</div>
+							<div class="customer">
+								<label for="msg" class="customer__label">Сообщение:</label>
+								<textarea name="" id="msg" cols="30" rows="10" class="msg"></textarea>							
+								<input type="hidden" name="spam" id="spam">
+							</div>
+
+
+							<!--<button type="submit" id="send" class="order__submit">Отправить</button>-->
+							<!--<div id="resp"></div>-->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-11 price">
+							<div id="resp"></div>
+							<p class="price__text">Итого стоимость работ: <span id="num">!!!</span> тенге</p>
+							<button type="submit" id="send" class="order__submit">Отправить</button>
+						</div>
+					</div>
+				</form>
+				
+				<!--<div id="img-out"></div>
+			</div>
+		</div>-->
+	</div>
+</div>
+<!-- ***** SCRIPTS ***** -->
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- calculator/libs -->
+<script src="libs/equalHeights/jquery.equalheights.min.js"></script>
+<script src="libs/js/calc.js"></script><script src="libs/js/calc_form.js"></script><script src="/libs/feedback/feedback.js"></script>

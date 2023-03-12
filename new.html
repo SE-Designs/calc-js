@@ -1,0 +1,268 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<div class="calculator" style="max-width: 1200px" id="app">
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    id="calculator_form"
+    class="order"
+  >
+    <div class="step-1" v-if="currentStep === '1'">
+      <h2>
+        Узнайте стоимость <br />
+        <span class="h2-lower">выбрав подходящий вариант:</span>
+      </h2>
+      <div class="w-4">
+        <div class="w-4__item" @click="goNext('2a')">
+          <img src="imgs/goto-2a.png" alt="" />
+        </div>
+        <div class="w-4__item" @click="goNext('2b')">
+          <img src="imgs/goto-2b.png" alt="" />
+        </div>
+        <div class="w-4__item" @click="goNext('2c')">
+          <img src="imgs/goto-2c.png" alt="" />
+        </div>
+        <div class="w-4__item" @click="goNext('2d')">
+          <img src="imgs/goto-2d.png" alt="" />
+          <div class="item-inner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="step-2-ll" v-if="currentStep === '2a'">
+      <div class="w-4">
+        <div class="w-4__item" @click="goNext('3a')">
+          <div class="item-inner">
+            <img src="imgs/goto-3a.png" alt="" />
+            <div class="shadow-text">
+              <h6>Фото на холсте</h6>
+              <p>(точный перенос фотографии)</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3b')">
+          <div class="item-inner">
+            <img src="imgs/goto-3b.png" alt="" />
+            <div class="shadow-text">
+              <h6>Dream Art</h6>
+              <p>(нарисованный художником арт портрет)</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3c')">
+          <div class="item-inner">
+            <img src="imgs/goto-3c.png" alt="" />
+            <div class="shadow-text">
+              <h6>Love Is портрет</h6>
+              <p>(идеальный романтический подарок любимому человеку)</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3d')">
+          <div class="item-inner">
+            <img src="imgs/goto-3d.png" alt="" />
+            <div class="shadow-text">
+              <h6>Стилизация и замена фото</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-4">
+        <div class="w-4__item" @click="goNext('3e')">
+          <div class="item-inner">
+            <img src="imgs/goto-3e.png" alt="" />
+            <div class="shadow-text">
+              <h6>Реставрация фото</h6>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3f')">
+          <div class="item-inner">
+            <img src="imgs/goto-3f.png" alt="" />
+            <div class="shadow-text">
+              <h6>Фотоколлаж</h6>
+              <p>(до 60 фотографий)</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3g')">
+          <div class="item-inner">
+            <img src="imgs/goto-3g.png" alt="" />
+            <div class="shadow-text">
+              <h6>Фотомозаика</h6>
+              <p>(от 100 до 200 фотографий)</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-4__item" @click="goNext('3h')">
+          <div class="item-inner">
+            <img src="imgs/goto-3h.png" alt="" />
+            <div class="shadow-text">
+              <h6>Детские метрики</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-3-ll" v-if="currentStep === '3a'">
+      <h2>Выберите размер:</h2>
+      <div class="grid_step-3-ll">
+        <!--  -->
+      </div>
+      <div class="choose-size">
+        <div class="w-2">
+          <div class="line">
+            <span>свой размер:</span>
+            <input type="number" name="size-width" id="size-width" />
+            <span>x</span>
+            <input type="number" name="size-height" id="size-height" />
+            <button @click="goNext('4a')">Продолжить</button>
+          </div>
+          <div class="line">
+            <p class="total-price">Ваша цена:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-4-ll" v-if="currentStep === '4a'">
+      <div class="order-block design">
+        <label class="preview-div_label">
+          <h3 class="order-block__title">
+            Изображение для печати<!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>-->
+          </h3>
+          <span class="button">Загрузить изображение <i>⤓</i></span>
+          <input
+            type="file"
+            multiple
+            accept="image/jpeg,image/png"
+            size="20"
+            name="calc_file[]"
+            class="design__file"
+          />
+        </label>
+        <p>↶ поворот влево</p>
+        <p>поворот вправо ↷</p>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  const { ref, mount, createApp } = Vue;
+
+  createApp({
+    setup() {
+      const currentStep = ref("1");
+
+      const goNext = (next) => {
+        currentStep.value = next;
+        console.log(currentStep.value);
+      };
+
+      const goBack = (back) => {
+        currentStep.value = back;
+      };
+
+      return {
+        currentStep,
+        goNext,
+        goBack,
+      };
+    },
+  }).mount("#app");
+</script>
+
+<script src="libs/equalHeights/jquery.equalheights.min.js"></script>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calculator {
+    border: 2px solid black;
+    overflow: hidden;
+  }
+
+  h2 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+    text-align: center;
+
+    color: #755b4e;
+  }
+
+  h6 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+  }
+
+  p {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  .h2-lower {
+    font-size: 32px;
+  }
+
+  .w-4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(25%, 25%));
+  }
+
+  .w-4__item {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .shadow-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 80px;
+
+    color: white;
+  }
+
+  input.design__file {
+    display: none;
+  }
+
+  .preview-div_label {
+    display: block;
+  }
+  /* STYLING FOR STEP-1 */
+</style>
