@@ -239,42 +239,18 @@
     </div>
     <div class="step-4-ll" v-if="currentStep === '4a'">
       <h2>Загрузите файлы:</h2>
-      <div class="order-block design">
-        <label class="preview-div_label">
-          <h3 class="order-block__title">Изображение для печати<!--<span class="info"><i class="fas fa-question-circle" title="Информация"></i></span>--></h3>
-          <span class="button">Загрузить изображение <i>⤓</i></span>
-          <input type="file" multiple accept="image/jpeg,image/png" size="20" name="calc_file[]" class="design__file">
-        </label>
-      </div>
       <div class="uploadfile">
         <div class="uploadfile-btn">
           загрузить файлы
+          <input type="file" v-on:change="previewFile">
         </div>
         <img src="imgs/fileupload.svg" alt="">
         <div class="uploadfile-process">
           файлы загружены
+          <div id="preview" v-html="previewContent"></div>
         </div>
         <button @click="goNext('5a')">далее</button>
       </div>
-      <!-- <div class="order-block design">
-        <label class="preview-div_label">
-          <h3 class="order-block__title">
-            Изображение для печати
-          </h3>
-          <span class="button">Загрузить изображение <i>⤓</i></span>
-          <input
-            type="file"
-            multiple
-            accept="image/jpeg,image/png"
-            size="20"
-            name="calc_file[]"
-            class="design__file"
-          />
-        </label>
-        <p>↶ поворот влево</p>
-        <p>поворот вправо ↷</p>
-        <button @click="goNext('5a')">Продолжить</button>
-      </div> -->
     </div>
     <div class="step-5" v-if="currentStep === '5a'">
         <h2>Виды оформления холста:</h2>
@@ -301,7 +277,8 @@
         <h2>Выберите толщину подрамника:</h2>
         <div class="select__thickness-sides">
           <div class="select__thickness-left ">
-              <img src="imgs/goto-2d.png " alt=" ">
+              <!-- <img src="imgs/goto-2d.png " alt=" "> -->
+              <div id="preview" v-html="previewContent"></div>
           </div>
           <div class="select__thickness-right ">
               <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
@@ -336,7 +313,8 @@
       <h2>Печать без подрамника:</h2>
       <div class="select__thickness-sides">
         <div class="select__thickness-left ">
-            <img src="imgs/goto-2d.png " alt=" ">
+            <!-- <img src="imgs/goto-2d.png " alt=" "> -->
+            <div id="preview" v-html="previewContent"></div>
         </div>
         <div class="select__thickness-right ">
             <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
@@ -494,7 +472,6 @@
 </div>
 
 <script>
-
   const { ref, mount, createApp } = Vue;
 
   createApp({
@@ -505,6 +482,7 @@
       ];
       const selectedSize = ref(sizes[0].value);
       const currentStep = ref("1");
+      const previewContent = ref('');
 
       const goNext = (next) => {
         currentStep.value = next;
@@ -515,18 +493,35 @@
         currentStep.value = back;
       };
 
+      const previewFile = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', () => {
+          const fileType = file.type.split('/')[0];
+          if (fileType === 'image') {
+            previewContent.value = `<img src="${reader.result}" alt="preview">`;
+          } else if (fileType === 'video') {
+            previewContent.value = `<video src="${reader.result}" controls></video>`;
+          }
+        });
+
+        reader.readAsDataURL(file);
+      };
+
       return {
         currentStep,
-      sizes,
-      selectedSize,
-      goNext,
-      goBack,
+        sizes,
+        selectedSize,
+        previewContent,
+        goNext,
+        goBack,
+        previewFile,
       };
     },
   }).mount("#app");
-
-
 </script>
+
 
 <script src="libs/equalHeights/jquery.equalheights.min.js"></script>
 
