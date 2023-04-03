@@ -36,6 +36,7 @@
       </div>
     </div>
     <div class="step-2-ll" v-if="currentStep === '2a'">
+      <button @click="goBack('1')">назад</button>
       <div class="w-4">
         <div class="w-4__item" @click="goNext('3a')">
           <div class="item-inner">
@@ -111,6 +112,8 @@
       </div>
     </div>
     <div class="step-3-ll" v-if="currentStep === '3a'">
+      <button @click="goBack('2a')">назад</button>
+
       <h2>Выберите размер:</h2>
       <select id="size-select" v-model="selectedSize">
         <option v-for="size in sizes" :value="size.value">{{ size.label }}</option>
@@ -210,6 +213,8 @@
       </div> -->
     </div>
     <div class="step-3"  v-if="currentStep === '3b'">
+      <button @click="goBack('2a')">назад</button>
+
       <h2>Сколько человек на фотографии?</h2>
       <h3>Выбирете количество:</h3>
       <div class="select__people">
@@ -238,6 +243,8 @@
       <div class="my-choose">Напишите количество: <input type="text" placeholder="кол-во"></div>
     </div>
     <div class="step-4-ll" v-if="currentStep === '4a'">
+      <button @click="goBack('3a')">назад</button>
+
       <h2>Загрузите файлы:</h2>
       <div class="uploadfile">
         <div class="uploadfile-btn">
@@ -253,6 +260,8 @@
       </div>
     </div>
     <div class="step-5" v-if="currentStep === '5a'">
+      <button @click="goBack('4a')">назад</button>
+
         <h2>Виды оформления холста:</h2>
         <div class="images__block">
             <div class="images__block-item" @click="goNext('6a')">
@@ -274,6 +283,8 @@
         </div>
     </div>
     <div class="step-6" v-if="currentStep === '6a'">
+      <button @click="goBack('5a')">назад</button>
+
         <h2>Выберите толщину подрамника:</h2>
         <div class="select__thickness-sides">
           <div class="select__thickness-left ">
@@ -310,6 +321,8 @@
         </div>
     </div>
     <div class="step-6" v-if="currentStep === '6b'">
+      <button @click="goBack('5a')">назад</button>
+
       <h2>Печать без подрамника:</h2>
       <div class="select__thickness-sides">
         <div class="select__thickness-left ">
@@ -332,15 +345,16 @@
     </div>
     </div>
     <div class="step-6" v-if="currentStep === '6c'">
-      <h2>Печать без подрамника:</h2>
+      <button @click="goBack('5a')">назад</button>
+
+      <h2>Оформление в багетную рамку:</h2>
       <div class="select__thickness-sides">
         <div class="select__thickness-left ">
-            <img src="imgs/goto-2d.png " alt=" ">
+            <!-- <img src="imgs/goto-2d.png " alt=" "> -->
+            <div id="preview" v-html="previewContent"></div>
         </div>
         <div class="select__thickness-right ">
-            <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
-            <p>Печать на холсте делается без натяжки на подрамник, сдаётся в рулоне.
-              Удобно для транспортировки в самолёте или отправке в другую страну.</p>
+
         </div>
       </div>
       <div class="select__thickness-bottom">
@@ -353,6 +367,8 @@
     </div>
     </div>
     <div class="step-7" v-if="currentStep === '7a'">
+      <button @click="goBack('5a')">назад</button>
+
       <h2>Дополнительное оформление:</h2>
       <div class="additional__design">
         <div class="additional__design-img">
@@ -438,6 +454,8 @@
       </div>
     </div>
     <div class="step-8" v-if="currentStep === '8a'">
+      <button @click="goBack('5a')">назад</button>
+
       <h2>Осталось заполнить форму</h2>
       <div class="form">
         <div class="form-boxx">
