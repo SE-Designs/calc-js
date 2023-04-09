@@ -194,23 +194,6 @@
         </div>
       </div>
       <button @click="goNext('4a')">Продолжить</button>
-
-      <!-- <div class="grid_step-3-ll">
-      </div>
-      <div class="choose-size">
-        <div class="w-2">
-          <div class="line">
-            <span>свой размер:</span>
-            <input type="number" name="size-width" id="size-width" />
-            <span>x</span>
-            <input type="number" name="size-height" id="size-height" />
-            <button @click="goNext('4a')">Продолжить</button>
-          </div>
-          <div class="line">
-            <p class="total-price">Ваша цена:</p>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div class="step-3"  v-if="currentStep === '3b'">
       <button @click="goBack('2a')">назад</button>
@@ -349,12 +332,35 @@
 
       <h2>Оформление в багетную рамку:</h2>
       <div class="select__thickness-sides">
-        <div class="select__thickness-left ">
-            <!-- <img src="imgs/goto-2d.png " alt=" "> -->
-            <div id="preview" v-html="previewContent"></div>
+        <div class="select__thickness-left ram">
+            <div id="preview" class="preview" v-html="previewContent"></div>
+            <img :src="selectedImageUrl" class="ramka__bg" alt="">
         </div>
         <div class="select__thickness-right ">
-
+          <div class="ramka">
+            <input type="radio" value="" name="ramka" id="r1" >
+            <label for="r1" class="r1" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'"></label>>
+              <img src="https://oformi-foto.ru/385/27285.jpg">
+            </label>
+          </div>
+          <div class="ramka">
+            <input type="radio" value="" name="ramka" id="r2">
+            <label for="r2" class="r2" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
+              <img src="https://oformi-foto.ru/385/27288.jpg">
+            </label>
+          </div>
+          <div class="ramka">
+            <input type="radio" value="" name="ramka" id="r3">
+            <label for="r3" class="r3" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'">
+              <img src="https://oformi-foto.ru/385/27285.jpg">
+            </label>
+          </div>
+          <div class="ramka">
+            <input type="radio" value="" name="ramka" id="r4">
+            <label for="r4" class="r4" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
+              <img src="https://oformi-foto.ru/385/27288.jpg">
+            </label>
+          </div>
         </div>
       </div>
       <div class="select__thickness-bottom">
@@ -501,6 +507,7 @@
       const selectedSize = ref(sizes[0].value);
       const currentStep = ref("1");
       const previewContent = ref('');
+      const selectedImageUrl = ref(''); // add this line to hold the URL of the selected image
 
       const goNext = (next) => {
         currentStep.value = next;
@@ -532,6 +539,7 @@
         sizes,
         selectedSize,
         previewContent,
+        selectedImageUrl, // add this line to expose selectedImageUrl to the template
         goNext,
         goBack,
         previewFile,
@@ -1122,6 +1130,64 @@ line-height: 35px;
 text-align: center;
 
 color: #755B4E;
+}
+
+.select__thickness-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 132px;
+  grid-auto-columns: 132px;
+}
+
+.ramka {
+  background: #D9D9D9;
+  width: 100%;
+  height: 100%;
+}
+.ramka label {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 5px solid none;
+
+}
+.ramka input{
+  display: none;
+}
+.ramka input[type="radio"]:checked + label {
+border: 5px solid #14620D;
+}
+.ramka .r1 {
+  background: #000000;
+}
+
+.ramka .r2 {
+  background: #755b4e;
+}
+.ramka img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.select__thickness-left.ram {
+  position: relative;
+}
+.preview {
+  position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 100;
+}
+.ramka__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: contain !important;
+  z-index: -1;
 }
 </style>
 
