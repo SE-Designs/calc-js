@@ -1,1193 +1,1651 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 <div class="calculator" style="max-width: 1200px" id="app">
-  <form
-    method="POST"
-    enctype="multipart/form-data"
-    id="calculator_form"
-    class="order"
-  >
-    <div class="step-1" v-if="currentStep === '1'">
-      <h2>
-        Узнайте стоимость <br />
-        <span class="h2-lower">выбрав подходящий вариант:</span>
-      </h2>
-      <div class="w-4">
-        <div class="w-4__item" @click="goNext('2a')">
-          <img src="imgs/goto-2a.png" alt="" />
-        </div>
-        <div class="w-4__item" @click="goNext('2b')">
-          <img src="imgs/goto-2b.png" alt="" />
-        </div>
-        <div class="w-4__item" @click="goNext('2c')">
-          <img src="imgs/goto-2c.png" alt="" />
-        </div>
-        <div class="w-4__item" @click="goNext('2d')">
-          <img src="imgs/goto-2d.png" alt="" />
-          <div class="item-inner"></div>
-        </div>
-      </div>
-    </div>
-    <div class="step-2-ll" v-if="currentStep === '2a'">
-      <button @click="goBack('1')">назад</button>
-      <div class="w-4">
-        <div class="w-4__item" @click="goNext('3a')">
-          <div class="item-inner">
-            <img src="imgs/goto-3a.png" alt="" />
-            <div class="shadow-text">
-              <h6>Фото на холсте</h6>
-              <p>(точный перенос фотографии)</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3b')">
-          <div class="item-inner">
-            <img src="imgs/goto-3b.png" alt="" />
-            <div class="shadow-text">
-              <h6>Dream Art</h6>
-              <p>(нарисованный художником арт портрет)</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3c')">
-          <div class="item-inner">
-            <img src="imgs/goto-3c.png" alt="" />
-            <div class="shadow-text">
-              <h6>Love Is портрет</h6>
-              <p>(идеальный романтический подарок любимому человеку)</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3d')">
-          <div class="item-inner">
-            <img src="imgs/goto-3d.png" alt="" />
-            <div class="shadow-text">
-              <h6>Стилизация и замена фото</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-4">
-        <div class="w-4__item" @click="goNext('3e')">
-          <div class="item-inner">
-            <img src="imgs/goto-3e.png" alt="" />
-            <div class="shadow-text">
-              <h6>Реставрация фото</h6>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3f')">
-          <div class="item-inner">
-            <img src="imgs/goto-3f.png" alt="" />
-            <div class="shadow-text">
-              <h6>Фотоколлаж</h6>
-              <p>(до 60 фотографий)</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3g')">
-          <div class="item-inner">
-            <img src="imgs/goto-3g.png" alt="" />
-            <div class="shadow-text">
-              <h6>Фотомозаика</h6>
-              <p>(от 100 до 200 фотографий)</p>
-            </div>
-          </div>
-        </div>
-        <div class="w-4__item" @click="goNext('3h')">
-          <div class="item-inner">
-            <img src="imgs/goto-3h.png" alt="" />
-            <div class="shadow-text">
-              <h6>Детские метрики</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="step-3-ll" v-if="currentStep === '3a'">
-      <button @click="goBack('2a')">назад</button>
-
-      <h2>Выберите размер:</h2>
-      <select id="size-select" v-model="selectedSize">
-        <option v-for="size in sizes" :value="size.value">{{ size.label }}</option>
-      </select>
-      <div id="size-display">
-        Size: <span>{{ selectedSize.split(':')[0] }}</span>x<span>{{ selectedSize.split(':')[1] }}</span>
-      </div>
-
-      <div class="select__size">
-        <div class="select__size-left">
-          <div class="select__size-left-top">
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="30x40" >
-              <label for="30x40">30x40</label>
-            </div>
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="40x40">
-              <label for="40x40">40x40</label>
-            </div>
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="50x40">
-              <label for="50x40">50x40</label>
-            </div>
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="60x40">
-              <label for="60x40">60x40</label>
-            </div>
-          </div>
-          <div class="select__size-left-middle">
-            <div class="select__size-left-m-l">
-              <div class="select__size-item">
-                <input type="radio" name="size-select" id="60x60" >
-                <label for="60x60">60x60</label>
-              </div>
-              <div class="select__size-item">
-                <input type="radio" name="size-select" id="80x80">
-                <label for="80x80">80x80</label>
-              </div>
-              <div class="select__size-item">
-                <input type="radio" name="size-select" id="60x80">
-                <label for="60x80">60x80</label>
-              </div>
-              <div class="select__size-item">
-                <input type="radio" name="size-select" id="50x50">
-                <label for="50x50">50x50</label>
-              </div>
-            </div>
-            <div class="select__size-left-m-r">
-              <div class="select__size-item">
-                <input type="radio" name="size-select" id="100x140">
-                <label for="100x140">100x140</label>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="select__size-right">
-          <div class="select__size-right-top">
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="120x90" >
-              <label for="120x90" class="hundredTwenty-ninety">120x90</label>
-            </div>
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="50x70" >
-              <label for="50x70" class="fifty-seventy">50x70</label>
-            </div>
-          </div>
-          <div class="select__size-right-bottom">
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="60x90" >
-              <label for="60x90" class="sixty-ninety">60x90</label>
-            </div>
-            <div class="select__size-item">
-              <input type="radio" name="size-select" id="70x70" >
-              <label for="70x70" class="seventy-seventy">70x70</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button @click="goNext('4a')">Продолжить</button>
-    </div>
-    <div class="step-3"  v-if="currentStep === '3b'">
-      <button @click="goBack('2a')">назад</button>
-
-      <h2>Сколько человек на фотографии?</h2>
-      <h3>Выбирете количество:</h3>
-      <div class="select__people">
-        <div class="select__people-item">
-          <input type="radio" id="onep" name="select__people">
-          <label for="onep"><img src="imgs/1 человек.png" alt=""></label>
-        </div>
-        <div class="select__people-item">
-          <input type="radio" id="twop" name="select__people">
-          <label for="twop"><img src="imgs/2 человека.png" alt=""></label>
-        </div>
-        <div class="select__people-item">
-          <input type="radio" id="threep" name="select__people">
-          <label for="threep"><img src="imgs/3 человека.png" alt=""></label>
-        </div>
-        <div class="select__people-item">
-          <input type="radio" id="fourp" name="select__people">
-          <label for="fourp"><img src="imgs/4 человека.png" alt=""></label>
-        </div>
-        <div class="select__people-item">
-          <input type="radio" id="fivep" name="select__people">
-          <label for="fivep"><img src="imgs/5 человек.png" alt=""></label>
-        </div>
-      </div>
-      <h3>У меня больше людей</h3>
-      <div class="my-choose">Напишите количество: <input type="text" placeholder="кол-во"></div>
-    </div>
-    <div class="step-4-ll" v-if="currentStep === '4a'">
-      <button @click="goBack('3a')">назад</button>
-
-      <h2>Загрузите файлы:</h2>
-      <div class="uploadfile">
-        <div class="uploadfile-btn">
-          загрузить файлы
-          <input type="file" v-on:change="previewFile">
-        </div>
-        <img src="imgs/fileupload.svg" alt="">
-        <div class="uploadfile-process">
-          файлы загружены
-          <div id="preview" v-html="previewContent"></div>
-        </div>
-        <button @click="goNext('5a')">далее</button>
-      </div>
-    </div>
-    <div class="step-5" v-if="currentStep === '5a'">
-      <button @click="goBack('4a')">назад</button>
-
-        <h2>Виды оформления холста:</h2>
-        <div class="images__block">
-            <div class="images__block-item" @click="goNext('6a')">
-                <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
-                <p>Только печать на холсте</p>
-            </div>
-            <div class="images__block-item" @click="goNext('6b')">
-                <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
-                <p>Только печать на холсте</p>
-            </div>
-            <div class="images__block-item" @click="goNext('6c')">
-                <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
-                <p>Только печать на холсте</p>
-            </div>
-            <div class="images__block-item">
-                <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
-                <p>Только печать на холсте</p>
-            </div>
-        </div>
-    </div>
-    <div class="step-6" v-if="currentStep === '6a'">
-      <button @click="goBack('5a')">назад</button>
-
-        <h2>Выберите толщину подрамника:</h2>
-        <div class="select__thickness-sides">
-          <div class="select__thickness-left ">
-              <!-- <img src="imgs/goto-2d.png " alt=" "> -->
-              <div id="preview" v-html="previewContent"></div>
-          </div>
-          <div class="select__thickness-right ">
-              <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
-              <div class="select__thickness-btns ">
-                <div class="select__thickness-btn pink">
-                  <input type="radio" id="twocm" name="select__thickness">
-                  <label for="twocm">выбрать 2 см</label>
-                  <p>Рекомендуем выбирать 
-                    для изготовления картин
-                    размером до 1 метра</p>
+    <form method="POST" enctype="multipart/form-data" id="calculator_form" class="order">
+        <div class="step-1" v-if="currentStep === '1'">
+            <h2>
+                Узнайте стоимость <br />
+                <span class="h2-lower">выбрав подходящий вариант:</span>
+            </h2>
+            <div class="w-4">
+                <div class="w-4__item" @click="goNext('2a')">
+                    <img src="imgs/goto-2a.png" alt="" />
                 </div>
-                <div class="select__thickness-btn green">
-                  <input type="radio" id="threecm" name="select__thickness">
-                  <label for="threecm">выбрать 3 см</label>
-                  <p>Рекомендуем выбирать 
-                    для изготовления картин
-                    размером от 50 см</p>
+                <div class="w-4__item" @click="goNext('2b')">
+                    <img src="imgs/goto-2b.png" alt="" />
                 </div>
-              </div>
-          </div>
-        </div>
-        <div class="select__thickness-bottom">
-            <button class="povernut">повернуть</button>
-            <div class="select__thickness-input povernut">
-                <label  for="">Ваша цена: </label>
-                <input type="text">
+                <div class="w-4__item" @click="goNext('2c')">
+                    <img src="imgs/goto-2c.png" alt="" />
+                </div>
+                <div class="w-4__item" @click="goNext('2d')">
+                    <img src="imgs/goto-2d.png" alt="" />
+                    <div class="item-inner"></div>
+                </div>
             </div>
-            <button class="next" @click="goNext('7a')">далее</button>
         </div>
-    </div>
-    <div class="step-6" v-if="currentStep === '6b'">
-      <button @click="goBack('5a')">назад</button>
-
-      <h2>Печать без подрамника:</h2>
-      <div class="select__thickness-sides">
-        <div class="select__thickness-left ">
-            <!-- <img src="imgs/goto-2d.png " alt=" "> -->
-            <div id="preview" v-html="previewContent"></div>
-        </div>
-        <div class="select__thickness-right ">
-            <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
-            <p>Печать на холсте делается без натяжки на подрамник, сдаётся в рулоне.
-              Удобно для транспортировки в самолёте или отправке в другую страну.</p>
-        </div>
-      </div>
-      <div class="select__thickness-bottom">
-        <button class="povernut">повернуть</button>
-        <div class="select__thickness-input povernut">
-            <label  for="">Ваша цена: </label>
-            <input type="text">
-        </div>
-        <button class="next" @click="goNext('7a')">далее</button>
-    </div>
-    </div>
-    <div class="step-6" v-if="currentStep === '6c'">
-      <button @click="goBack('5a')">назад</button>
-
-      <h2>Оформление в багетную рамку:</h2>
-      <div class="select__thickness-sides">
-        <div class="select__thickness-left ram">
-            <div id="preview" class="preview" v-html="previewContent"></div>
-            <img :src="selectedImageUrl" class="ramka__bg" alt="">
-        </div>
-        <div class="select__thickness-right ">
-          <div class="ramka">
-            <input type="radio" value="" name="ramka" id="r1" >
-            <label for="r1" class="r1" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'"></label>>
-              <img src="https://oformi-foto.ru/385/27285.jpg">
-            </label>
-          </div>
-          <div class="ramka">
-            <input type="radio" value="" name="ramka" id="r2">
-            <label for="r2" class="r2" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
-              <img src="https://oformi-foto.ru/385/27288.jpg">
-            </label>
-          </div>
-          <div class="ramka">
-            <input type="radio" value="" name="ramka" id="r3">
-            <label for="r3" class="r3" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'">
-              <img src="https://oformi-foto.ru/385/27285.jpg">
-            </label>
-          </div>
-          <div class="ramka">
-            <input type="radio" value="" name="ramka" id="r4">
-            <label for="r4" class="r4" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
-              <img src="https://oformi-foto.ru/385/27288.jpg">
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="select__thickness-bottom">
-        <button class="povernut">повернуть</button>
-        <div class="select__thickness-input povernut">
-            <label  for="">Ваша цена: </label>
-            <input type="text">
-        </div>
-        <button class="next" @click="goNext('7a')">далее</button>
-    </div>
-    </div>
-    <div class="step-7" v-if="currentStep === '7a'">
-      <button @click="goBack('5a')">назад</button>
-
-      <h2>Дополнительное оформление:</h2>
-      <div class="additional__design">
-        <div class="additional__design-img">
-          <div class="additional__design-img-r">
-            <input type="checkbox" id="additional__design-input-1" name="additional__design-input-1">
-            <label for="additional__design-input-1"></label>
-            <img src="imgs/goto-2b.png" alt="">
-          </div>
-          <div class="additional__design-img-r">
-            <input type="checkbox" id="additional__design-input-2" name="additional__design-input-2">
-            <label for="additional__design-input-2"></label>
-            <img src="imgs/goto-2a.png" alt="">
-          </div>
-        </div>
-        <div class="additional__design-bottom">
-          <div class="left">
-            <h2>Выберите цвет ленты:</h2>
-            <div class="additional__design-left">
-              <div class="additional__design-colorChoose">
-                <input type="radio" id="red" name="color">
-                <label for="red"></label>
-              </div>
-              <div class="additional__design-colorChoose red">
-                <input type="radio" id="red" name="color">
-                <label for="red"></label>
-              </div>
-              <div class="additional__design-colorChoose white">
-                <input type="radio" id="white" name="color">
-                <label for="white"></label>
-              </div>
-              <div class="additional__design-colorChoose pink">
-                <input type="radio" id="pink" name="color">
-                <label for="pink"></label>
-              </div>
-              <div class="additional__design-colorChoose blue">
-                <input type="radio" id="blue" name="color">
-                <label for="blue"></label>
-              </div>
-              <div class="additional__design-colorChoose brown">
-                <input type="radio" id="brown" name="color">
-                <label for="brown"></label>
-              </div>
-              <div class="additional__design-colorChoose yellow">
-                <input type="radio" id="yellow" name="color">
-                <label for="yellow"></label>
-              </div>
-              <div class="additional__design-colorChoose pinker">
-                <input type="radio" id="pinker" name="color">
-                <label for="pinker"></label>
-              </div>
-              <div class="additional__design-colorChoose purpul">
-                <input type="radio" id="purpul" name="color">
-                <label for="purpul"></label>
-              </div>
-              <div class="additional__design-colorChoose green">
-                <input type="radio" id="green" name="color">
-                <label for="green"></label>
-              </div>
-              <div class="additional__design-colorChoose orange">
-                <input type="radio" id="orange" name="color">
-                <label for="orange"></label>
-              </div>
-              <div class="additional__design-colorChoose none">
-                <input type="radio" id="none" name="color">
-                <label for="none">убрать</label>
-              </div>
+        <div class="step-2-ll" v-if="currentStep === '2a'">
+            <button @click="goBack('1')">назад</button>
+            <div class="w-4">
+                <div class="w-4__item" @click="goNext('3a')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3a.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Фото на холсте</h6>
+                            <p>(точный перенос фотографии)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3b')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3b.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Dream Art</h6>
+                            <p>(нарисованный художником арт портрет)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3c')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3c.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Love Is портрет</h6>
+                            <p>(идеальный романтический подарок любимому человеку)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3d')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3d.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Стилизация и замена фото</h6>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="additional__design-right">
-            <div class="additional__design-right-inner">
-              <div class="povernut">добавить</div>
-              <div class=" povernut">убрать</div>
+            <div class="w-4">
+                <div class="w-4__item" @click="goNext('3e')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3e.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Реставрация фото</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3f')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3f.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Фотоколлаж</h6>
+                            <p>(до 60 фотографий)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3g')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3g.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Фотомозаика</h6>
+                            <p>(от 100 до 200 фотографий)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-4__item" @click="goNext('3h')">
+                    <div class="item-inner">
+                        <img src="imgs/goto-3h.png" alt="" />
+                        <div class="shadow-text">
+                            <h6>Детские метрики</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step-3-ll" v-if="currentStep === '3a'">
+            <button @click="goBack('2a')">назад</button>
+
+            <h2>Выберите размер:</h2>
+            <div class="grid">
+                <div class="grid__left">
+                    <div class="grid__top">
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="30x21">
+                                <label for="30x21">30 х 21</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="40x40">
+                                <label for="40x40">40 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="50x40">
+                                <label for="50x40">50 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x40">
+                                <label for="60x40">60 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x80">
+                                <label for="60x80">60 x 80</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__bottom">
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="30x40">
+                                <label for="30x40">  30 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="50x50">
+                                <label for="50x50">  50 x 50</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x60">
+                                <label for="60x60">  60 x 60</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x90">
+                                <label for="60x90"> 
+                                  <p>Топ продаж!</p><br>
+                                   60 x 90
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="70x70">
+                                <label for="70x70">  70 x 70</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__right">
+                    <div class="grid__item">
+                        <div class="select__size-item">
+                            <input type="radio" name="size-select" id="50x70">
+                            <label for="50x70">
+                            <p>Топ продаж!</p> <br>
+                            50 x 70</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__img">
+                <img src="./imgs/grid.png" alt="">
+            </div>
+
+            <div class="dalee">
+                <p>свой размер:</p>
+                <input type="text" placeholder="шир"> х
+                <input type="text" placeholder="выс">
+                <input type="text" placeholder="Ваша цена: " class="daleewidth">
+            </div>
+            <button @click="goNext('4a')">Продолжить</button>
+        </div>
+        <div class="step-3 size--step" v-if="currentStep === '3c'">
+            <button @click="goBack('2a')">назад</button>
+
+            <h2>Выберите размер:</h2>
+            <div class="grid-2">
+                <div class="grid__left-2">
+                    <div class="grid__top-2">
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="30x40">
+                                <label for="30x40">  30 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="40x40">
+                                <label for="40x40">  40 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="50x40">
+                                <label for="50x40">  50 x 40</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x40">
+                                <label for="60x40"> 
+                                    <p>Топ продаж!</p>
+                                     60 x 40</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__bottom-2">
+                        <div class="grid__bottom-2-1">
+                            <div class="grid__item">
+                                <div class="select__size-item">
+                                    <input type="radio" name="size-select" id="60x60">
+                                    <label for="60x60">  60 x 60</label>
+                                </div>
+                            </div>
+                            <div class="grid__item">
+                                <div class="select__size-item">
+                                    <input type="radio" name="size-select" id="50x50">
+                                    <label for="50x50">  50 x 50</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__bottom-2-2">
+                            <div class="grid__item">
+                                <div class="select__size-item">
+                                    <input type="radio" name="size-select" id="80x80">
+                                    <label for="80x80">  80 x 80</label>
+                                </div>
+                            </div>
+                            <div class="grid__item">
+                                <div class="select__size-item">
+                                    <input type="radio" name="size-select" id="60x80">
+                                    <label for="60x80">  60 x 80</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__bottom-2-3">
+                            <div class="grid__item">
+                                <div class="select__size-item">
+                                    <input type="radio" name="size-select" id="100x140">
+                                    <label for="100x140">  100 x 140</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid__right-2">
+                    <div class="grid__right-2-1">
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="120x90">
+                                <label for="120x90">  120 x 90</label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="50x70">
+                                <label for="50x70">
+                                        <p>Топ продаж!</p>
+                                        50 x 70
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid__right-2-2">
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="60x90">
+                                <label for="60x90">
+                                    <p>Топ продаж!</p>
+                                    60 x 90
+                                </label>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="select__size-item">
+                                <input type="radio" name="size-select" id="70x70">
+                                <label for="70x70">  70 x 70</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__img">
+                <img src="./imgs/grid.png" alt="">
+            </div>
+
+            <div class="dalee">
+                <p>свой размер:</p>
+                <input type="text" placeholder="шир"> х
+                <input type="text" placeholder="выс">
+                <input type="text" placeholder="Ваша цена: " class="daleewidth">
+            </div>
+            <button @click="goNext('4a')">Продолжить</button>
+        </div>
+        <div class="step-3" v-if="currentStep === '3b'">
+            <button @click="goBack('2a')">назад</button>
+
+            <h2>Сколько человек на фотографии?</h2>
+            <h3>Выбирете количество:</h3>
+            <div class="select__people">
+                <div class="select__people-item">
+                    <input type="radio" id="onep" name="select__people">
+                    <label for="onep"><img src="imgs/1 человек.png" alt=""></label>
+                </div>
+                <div class="select__people-item">
+                    <input type="radio" id="twop" name="select__people">
+                    <label for="twop"><img src="imgs/2 человека.png" alt=""></label>
+                </div>
+                <div class="select__people-item">
+                    <input type="radio" id="threep" name="select__people">
+                    <label for="threep"><img src="imgs/3 человека.png" alt=""></label>
+                </div>
+                <div class="select__people-item">
+                    <input type="radio" id="fourp" name="select__people">
+                    <label for="fourp"><img src="imgs/4 человека.png" alt=""></label>
+                </div>
+                <div class="select__people-item">
+                    <input type="radio" id="fivep" name="select__people">
+                    <label for="fivep"><img src="imgs/5 человек.png" alt=""></label>
+                </div>
+            </div>
+            <h3>У меня больше людей</h3>
+            <div class="my-choose">Напишите количество: <input type="text" placeholder="кол-во"></div>
+        </div>
+        <div class="step-4-ll" v-if="currentStep === '4a'">
+            <button @click="goBack('3a')">назад</button>
+
+            <h2>Загрузите файлы:</h2>
+            <div class="uploadfile">
+                <div class="uploadfile-btn">
+                    загрузить файлы
+                    <input type="file" v-on:change="previewFile">
+                </div>
+                <img src="imgs/fileupload.svg" alt="">
+                <div class="uploadfile-process">
+                    файлы загружены
+                    <div id="preview" v-html="previewContent"></div>
+                </div>
+                <button @click="goNext('5a')">далее</button>
+            </div>
+        </div>
+        <div class="step-5" v-if="currentStep === '5a'">
+            <button @click="goBack('4a')">назад</button>
+
+            <h2>Виды оформления холста:</h2>
+            <div class="images__block">
+                <div class="images__block-item" @click="goNext('6a')">
+                    <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
+                    <p>Только печать на холсте</p>
+                </div>
+                <div class="images__block-item" @click="goNext('6b')">
+                    <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
+                    <p>Только печать на холсте</p>
+                </div>
+                <div class="images__block-item" @click="goNext('6c')">
+                    <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
+                    <p>Только печать на холсте</p>
+                </div>
+                <div class="images__block-item">
+                    <div class="images__block-img"><img src="imgs/goto-3e.png" alt=""></div>
+                    <p>Только печать на холсте</p>
+                </div>
+            </div>
+        </div>
+        <div class="step-6" v-if="currentStep === '6a'">
+            <button @click="goBack('5a')">назад</button>
+
+            <h2>Выберите толщину подрамника:</h2>
+            <div class="select__thickness-sides">
+                <div class="select__thickness-left ">
+                    <!-- <img src="imgs/goto-2d.png " alt=" "> -->
+                    <div id="preview" v-html="previewContent"></div>
+                </div>
+                <div class="select__thickness-right ">
+                    <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
+                    <div class="select__thickness-btns ">
+                        <div class="select__thickness-btn pink">
+                            <input type="radio" id="twocm" name="select__thickness">
+                            <label for="twocm">выбрать 2 см</label>
+                            <p>Рекомендуем выбирать для изготовления картин размером до 1 метра</p>
+                        </div>
+                        <div class="select__thickness-btn green">
+                            <input type="radio" id="threecm" name="select__thickness">
+                            <label for="threecm">выбрать 3 см</label>
+                            <p>Рекомендуем выбирать для изготовления картин размером от 50 см</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="select__thickness-bottom">
-              <div class="select__thickness-input povernut">
-                  <label  for="">Ваша цена: </label>
-                  <input type="text">
-              </div>
-              <button class="next" @click="goNext('8a')">далее</button>
+                <button class="povernut">повернуть</button>
+                <div class="select__thickness-input povernut">
+                    <label for="">Ваша цена: </label>
+                    <input type="text">
+                </div>
+                <button class="next" @click="goNext('7a')">далее</button>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="step-8" v-if="currentStep === '8a'">
-      <button @click="goBack('5a')">назад</button>
+        <div class="step-6" v-if="currentStep === '6b'">
+            <button @click="goBack('5a')">назад</button>
 
-      <h2>Осталось заполнить форму</h2>
-      <div class="form">
-        <div class="form-boxx">
-          <label for="">Ваше имя:</label>
-          <input type="text">
+            <h2>Печать без подрамника:</h2>
+            <div class="select__thickness-sides">
+                <div class="select__thickness-left ">
+                    <!-- <img src="imgs/goto-2d.png " alt=" "> -->
+                    <div id="preview" v-html="previewContent"></div>
+                </div>
+                <div class="select__thickness-right ">
+                    <div class="select__thickness-img "><img src="imgs/goto-2a.png " alt=" "></div>
+                    <p>Печать на холсте делается без натяжки на подрамник, сдаётся в рулоне. Удобно для транспортировки в самолёте или отправке в другую страну.</p>
+                </div>
+            </div>
+            <div class="select__thickness-bottom">
+                <button class="povernut">повернуть</button>
+                <div class="select__thickness-input povernut">
+                    <label for="">Ваша цена: </label>
+                    <input type="text">
+                </div>
+                <button class="next" @click="goNext('7a')">далее</button>
+            </div>
         </div>
-        <div class="form-boxx radio">
-          <input type="radio" id="form-lable-1" value="Стандартное время изготовления" name="form">
-          <label for="form-lable-1">Стандартное время изготовления</label>
+        <div class="step-6" v-if="currentStep === '6c'">
+            <button @click="goBack('5a')">назад</button>
+
+            <h2>Оформление в багетную рамку:</h2>
+            <div class="select__thickness-sides">
+                <div class="select__thickness-left ram">
+                    <div id="preview" class="preview" v-html="previewContent"></div>
+                    <img :src="selectedImageUrl" class="ramka__bg" alt="">
+                </div>
+                <div class="select__thickness-right ">
+                    <div class="ramka">
+                        <input type="radio" value="" name="ramka" id="r1">
+                        <label for="r1" class="r1" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'"></label>>
+                        <img src="https://oformi-foto.ru/385/27285.jpg">
+                        </label>
+                    </div>
+                    <div class="ramka">
+                        <input type="radio" value="" name="ramka" id="r2">
+                        <label for="r2" class="r2" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
+              <img src="https://oformi-foto.ru/385/27288.jpg">
+            </label>
+                    </div>
+                    <div class="ramka">
+                        <input type="radio" value="" name="ramka" id="r3">
+                        <label for="r3" class="r3" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27285.jpg'">
+              <img src="https://oformi-foto.ru/385/27285.jpg">
+            </label>
+                    </div>
+                    <div class="ramka">
+                        <input type="radio" value="" name="ramka" id="r4">
+                        <label for="r4" class="r4" @click="selectedImageUrl = 'https://oformi-foto.ru/385/27288.jpg'">
+              <img src="https://oformi-foto.ru/385/27288.jpg">
+            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="select__thickness-bottom">
+                <button class="povernut">повернуть</button>
+                <div class="select__thickness-input povernut">
+                    <label for="">Ваша цена: </label>
+                    <input type="text">
+                </div>
+                <button class="next" @click="goNext('7a')">далее</button>
+            </div>
         </div>
-        <div class="form-boxx">
-          <label for="">Ваш номер: </label>
-          <input type="text">
+        <div class="step-7" v-if="currentStep === '7a'">
+            <button @click="goBack('5a')">назад</button>
+
+            <h2>Дополнительное оформление:</h2>
+            <div class="additional__design">
+                <div class="additional__design-img">
+                    <div class="additional__design-img-r">
+                        <input type="checkbox" id="additional__design-input-1" name="additional__design-input-1">
+                        <label for="additional__design-input-1"></label>
+                        <img src="imgs/goto-2b.png" alt="">
+                    </div>
+                    <div class="additional__design-img-r">
+                        <input type="checkbox" id="additional__design-input-2" name="additional__design-input-2">
+                        <label for="additional__design-input-2"></label>
+                        <img src="imgs/goto-2a.png" alt="">
+                    </div>
+                </div>
+                <div class="additional__design-bottom">
+                    <div class="left">
+                        <h2>Выберите цвет ленты:</h2>
+                        <div class="additional__design-left">
+                            <div class="additional__design-colorChoose">
+                                <input type="radio" id="red" name="color">
+                                <label for="red"></label>
+                            </div>
+                            <div class="additional__design-colorChoose red">
+                                <input type="radio" id="red" name="color">
+                                <label for="red"></label>
+                            </div>
+                            <div class="additional__design-colorChoose white">
+                                <input type="radio" id="white" name="color">
+                                <label for="white"></label>
+                            </div>
+                            <div class="additional__design-colorChoose pink">
+                                <input type="radio" id="pink" name="color">
+                                <label for="pink"></label>
+                            </div>
+                            <div class="additional__design-colorChoose blue">
+                                <input type="radio" id="blue" name="color">
+                                <label for="blue"></label>
+                            </div>
+                            <div class="additional__design-colorChoose brown">
+                                <input type="radio" id="brown" name="color">
+                                <label for="brown"></label>
+                            </div>
+                            <div class="additional__design-colorChoose yellow">
+                                <input type="radio" id="yellow" name="color">
+                                <label for="yellow"></label>
+                            </div>
+                            <div class="additional__design-colorChoose pinker">
+                                <input type="radio" id="pinker" name="color">
+                                <label for="pinker"></label>
+                            </div>
+                            <div class="additional__design-colorChoose purpul">
+                                <input type="radio" id="purpul" name="color">
+                                <label for="purpul"></label>
+                            </div>
+                            <div class="additional__design-colorChoose green">
+                                <input type="radio" id="green" name="color">
+                                <label for="green"></label>
+                            </div>
+                            <div class="additional__design-colorChoose orange">
+                                <input type="radio" id="orange" name="color">
+                                <label for="orange"></label>
+                            </div>
+                            <div class="additional__design-colorChoose none">
+                                <input type="radio" id="none" name="color">
+                                <label for="none">убрать</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="additional__design-right">
+                        <div class="additional__design-right-inner">
+                            <div class="povernut">добавить</div>
+                            <div class=" povernut">убрать</div>
+                        </div>
+                        <div class="select__thickness-bottom">
+                            <div class="select__thickness-input povernut">
+                                <label for="">Ваша цена: </label>
+                                <input type="text">
+                            </div>
+                            <button class="next" @click="goNext('8a')">далее</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-boxx radio">
-          <input type="radio" id="form-lable-2" value="Нужно срочно" name="form">
-          <label for="form-lable-2">Нужно срочно</label>
+        <div class="step-8" v-if="currentStep === '8a'">
+            <button @click="goBack('5a')">назад</button>
+
+            <h2>Осталось заполнить форму</h2>
+            <div class="form">
+                <div class="form-boxx">
+                    <label for="">Ваше имя:</label>
+                    <input type="text">
+                </div>
+                <div class="form-boxx radio">
+                    <input type="radio" id="form-lable-1" value="Стандартное время изготовления" name="form">
+                    <label for="form-lable-1">Стандартное время изготовления</label>
+                </div>
+                <div class="form-boxx">
+                    <label for="">Ваш номер: </label>
+                    <input type="text">
+                </div>
+                <div class="form-boxx radio">
+                    <input type="radio" id="form-lable-2" value="Нужно срочно" name="form">
+                    <label for="form-lable-2">Нужно срочно</label>
+                </div>
+                <div class="form-boxx">
+                    <label for="">Комментарий:</label>
+                    <input type="text">
+                </div>
+                <div class="form-boxx">
+                    <label for="">Ваша цена: </label>
+                    <input type="text" placeholder="0 тг.">
+                </div>
+            </div>
+            <button class="submit">отправить заказ</button>
+            <p>дождитесь сообщения что заявка отправлена</p>
         </div>
-        <div class="form-boxx">
-          <label for="">Комментарий:</label>
-          <input type="text">
-        </div>
-        <div class="form-boxx">
-          <label for="">Ваша цена: </label>
-          <input type="text" placeholder="0 тг.">
-        </div>
-      </div>
-      <button class="submit">отправить заказ</button>
-      <p>дождитесь сообщения что заявка отправлена</p>
-    </div>
-  </form>
+    </form>
 </div>
 
 <script>
-  const { ref, mount, createApp } = Vue;
+    const {
+        ref,
+        mount,
+        createApp
+    } = Vue;
 
-  createApp({
-    setup() {
-      const sizes = [
-        { label: '1:2', value: '1:2' },
-        { label: '3:4', value: '3:4' },
-      ];
-      const selectedSize = ref(sizes[0].value);
-      const currentStep = ref("1");
-      const previewContent = ref('');
-      const selectedImageUrl = ref(''); // add this line to hold the URL of the selected image
+    createApp({
+        setup() {
+            const sizes = [{
+                label: '1:2',
+                value: '1:2'
+            }, {
+                label: '3:4',
+                value: '3:4'
+            }, ];
+            const selectedSize = ref(sizes[0].value);
+            const currentStep = ref("1");
+            const previewContent = ref('');
+            const selectedImageUrl = ref(''); // add this line to hold the URL of the selected image
 
-      const goNext = (next) => {
-        currentStep.value = next;
-        console.log(currentStep.value);
-      };
+            const goNext = (next) => {
+                currentStep.value = next;
+                console.log(currentStep.value);
+            };
 
-      const goBack = (back) => {
-        currentStep.value = back;
-      };
+            const goBack = (back) => {
+                currentStep.value = back;
+            };
 
-      const previewFile = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
+            const previewFile = (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
 
-        reader.addEventListener('load', () => {
-          const fileType = file.type.split('/')[0];
-          if (fileType === 'image') {
-            previewContent.value = `<img src="${reader.result}" alt="preview">`;
-          } else if (fileType === 'video') {
-            previewContent.value = `<video src="${reader.result}" controls></video>`;
-          }
-        });
+                reader.addEventListener('load', () => {
+                    const fileType = file.type.split('/')[0];
+                    if (fileType === 'image') {
+                        previewContent.value = `<img src="${reader.result}" alt="preview">`;
+                    } else if (fileType === 'video') {
+                        previewContent.value = `<video src="${reader.result}" controls></video>`;
+                    }
+                });
 
-        reader.readAsDataURL(file);
-      };
+                reader.readAsDataURL(file);
+            };
 
-      return {
-        currentStep,
-        sizes,
-        selectedSize,
-        previewContent,
-        selectedImageUrl, // add this line to expose selectedImageUrl to the template
-        goNext,
-        goBack,
-        previewFile,
-      };
-    },
-  }).mount("#app");
+            return {
+                currentStep,
+                sizes,
+                selectedSize,
+                previewContent,
+                selectedImageUrl, // add this line to expose selectedImageUrl to the template
+                goNext,
+                goBack,
+                previewFile,
+            };
+        },
+    }).mount("#app");
 </script>
 
 
 <script src="libs/equalHeights/jquery.equalheights.min.js"></script>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .calculator {
-    border: 2px solid black;
-    overflow: hidden;
-  }
-
-  h2 {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 54px;
-    text-align: center;
-
-    color: #755b4e;
-  }
-
-  h6 {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 33px;
-    text-align: center;
-  }
-
-  p {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 18px;
-    text-align: center;
-  }
-
-  .h2-lower {
-    font-size: 32px;
-  }
-
-  .w-4 {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(25%, 25%));
-  }
-
-  .w-4__item {
-    cursor: pointer;
-    position: relative;
-  }
-
-  .shadow-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 80px;
-
-    color: white;
-  }
-
-  input.design__file {
-    display: none;
-  }
-
-  .preview-div_label {
-    display: block;
-  }
-  /* STYLING FOR STEP-1 */
-  .images__block {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-columns: 300px;
-}
-
-.images__block-item {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.images__block-img {
-    width: 100%;
-    height: 185px;
-}
-
-.images__block-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.images__block-item p {
-    font-weight: 800;
-    font-size: 32px;
-    line-height: normal;
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.select__thickness-sides {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 25px;
-}
-.select__thickness-left {
-  width: 40%;
-  height: 502px;
-  background: url(UB12161OMB_01_BL.jpg);
-  filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.25));
-}
-.select__thickness-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.select__thickness-right {
-  width: 50%;
-}
-.select__thickness-img {
-  width: 100%;
-  height: 207px;
-  margin-bottom: 20px;
-}
-.select__thickness-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.select__thickness-btns {
-  display: flex;
-  justify-content: space-between;
-}
-.select__thickness-btn{
-  width: 48%;
-  display: flex;
-  flex-direction: column;
-}
-.select__thickness-btn input{
-  opacity: 0;
-  pointer-events: none;
-}
-
-.select__thickness-btn label {
-  font-weight: 800;
-  font-size: 26px;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 20px;
-  border: 1px solid #755B4E;
-  margin-bottom: 12px;
-  display: inline-block;
-  cursor: pointer;
-}
-.select__thickness-btn input[type="radio"]:checked + label {
-  background: #755B4E;
-  color: #FFFFFF;
-}
-.select__thickness-btn p{
-  font-weight: 800;
-  font-size: 20px;
-}
-.select__thickness-btn.pink {
-  color: #B78177;
-}
-.select__thickness-btn.pink p{
-  color: #EBC4BD;
-}
-.select__thickness-btn.green  p {
-  color: #BDDDDA;
-}
-.select__thickness-btn.green {
-  color: #699591;
-}
-.select__thickness-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-
-}
-.povernut {
-  border: 1px solid #755B4E;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 26px;
-  text-align: center;
-  color: #755B4E;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-button.povernut{
-  padding-left: 60px;
-  padding-right: 60px;
-  background: none;
-}
-.next{
-  background: #33AE64;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 26px;
-  text-align: center;
-  color: #FFFFFF;
-  padding: 5px 17px;
-}
-
-.select__thickness-input {
-  width: 410px;
-  display: flex;
-  align-items: center;
-}
-.select__thickness-input input {
-  width: 100%;
-  background: none;
-  border: none;
-}
-.select__thickness-input label{
-  white-space: nowrap;
-  padding-left: 10px;
-}
-
-/* additional__design-img */
-.additional__design-img {
-  display: flex;
-  height: 260px;
-}
-.additional__design-img-r {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-.additional__design-img-r img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.additional__design-img-r input {
-  display: none;
-}
-.additional__design-img-r label{
-  width: 100%;
-height: 100%;
-position: absolute;
-}
-.additional__design-img-r input[type="checkbox"]:checked + label {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px); /* for Safari */
-}
-.additional__design-left{
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-columns: 80px;
-  grid-auto-rows: 80px;
-}
-
-.additional__design-colorChoose{
-position: relative;
-background: url(UB12161OMB_01_BL.jpg);
-filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.25));
-}
-
-.additional__design-colorChoose label{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-}
-.additional__design-colorChoose input{
-  display: none;
-}
-.additional__design-colorChoose input[type="radio"]:checked + label {
-border: 4px solid #333;
-}
-
-.additional__design-colorChoose.red {
-  background: red;
-}
-.additional__design-colorChoose.white {
-  background: #fff;
-}
-.additional__design-colorChoose.pink{
-  background: pink;
-}
-.additional__design-colorChoose.blue {
-  background: blue;
-}
-.additional__design-colorChoose.brown{
-  background: brown;
-}
-.additional__design-colorChoose.yellow{
-  background: yellow;
-}
-.additional__design-colorChoose.pinker{
-  background: #EBC4BD;
-}
-.additional__design-colorChoose.purpul{
-  background: purple;
-}
-.additional__design-colorChoose.green{
-  background: #33AE64;
-}
-.additional__design-colorChoose.orange {
-  background: orange;
-}
-.additional__design-colorChoose.none {
-  border: 1px solid #755B4E;
-border-radius: 6px;
-font-weight: 800;
-font-size: 26px;
-text-align: center;
-color: #755B4E;
-}
-.additional__design-colorChoose.none{
-  position: static;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.additional__design-bottom, .additional__design-right-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
-
-}
-.additional__design-bottom .left,  .additional__design-right {
-  width: 47%;
-}
-
-.additional__design-right .povernut{
-  width: 40%;
-  margin-left: 15px;
-}
-.additional__design-right .select__thickness-input.povernut {
-  width: 100%;
-}
-
-.form {
-  display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-gap: 22px;
-}
-.form-boxx{
-  position: relative;
-  border: 1px solid #755B4E;
-  border-radius: 6px;
-  width: 100%;
-  padding: 5px 10px;
-  font-weight: 800;
-  font-size: 26px;
-  line-height: 35px;
-  text-align: center;
-  color: #755B4E;
-  display: flex;
-  white-space: nowrap;
-  align-items: center;
-}
-.form-boxx input{
-  width: 100%;
-  height: 100%;
-  padding: 6px 0;
-  border: none;
-}
-.form-boxx input[type="radio"]{
-  display: none;
-}
-.form-boxx input[type="radio"]:checked + label {
-  color: #33AE64;
-}
-
-.form-boxx input::placeholder{
-  font-weight: 800;
-font-size: 40px;
-line-height: 54px;
-text-align: center;
-
-color: rgba(117, 91, 78, 0.5);
-
-padding: 5px;
-}
-
-.submit {
-  margin: 22px auto;
-  background: #14620D;
-border: 1px solid #755B4E;
-border-radius: 6px;
-font-weight: 800;
-font-size: 26px;
-text-align: center;
-color: #FFFFFF;
-padding: 10px 40px;
-display: flex;
-}
-.step-8 p, .select__thickness-right p{
-  font-weight: 800;
-font-size: 20px;
-line-height: 27px;
-text-align: center;
-
-color: #755B4E;
-}
-
-.uploadfile{
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 700;
-font-size: 24px;
-text-align: center;
-margin-top: 30px;
-}
-.uploadfile-process{
-  color: #755B4E;
-  border: 1px solid #755B4E;
-border-radius: 6px;
-margin-right: 70px;
-}
-.uploadfile-btn{
-  background: #238AC5;
-border-radius: 6px;
-padding: 6px 36px;
-margin-right: 23px;
-color: #FFFFFF;
-}
-.uploadfile img {
-  margin-right: 23px;
-  width: 39px;
-height: 45px;
-
-}
-.uploadfile button{
-  color: #FFFFFF;
-  background: #33AE64;
-border-radius: 6px;
-padding: 6px 20px;
-font-size: inherit;
-font-weight: inherit;
-}
-#size-display {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* select__size-item */
-.select__size-item {
-}
-.select__size-item input{
-  display: none;
-}
-.select__size-item label{
-  font-weight: 800;
-font-size: 16px;
-text-align: center;
-color: #755B4E;
-margin-left: 10px;
-margin-bottom: 10px;
-background: #D9D9D9;
-border: 2px solid #000000;
-display: flex;
-align-items: center;
-justify-content: center;
-width: 86.44px;
-height: 85.27px;
-}
-.select__size-item input[type="radio"]:checked + label {
-  background: #755B4E;
-  color: #FFFFFF;
-}
-.select__size {
-  display: flex;
-}
-.select__size-left {
-  margin-right: 10px;
-}
-
-/*  */
-.select__people {
-  display: flex;
-  align-items: center;
-}
-.select__people h3 {
-  font-weight: 800;
-font-size: 26px;
-line-height: 35px;
-text-align: center;
-
-color: #755B4E;
-}
-.select__people-item {
-  position: relative;
-  margin-right: 30px;
-  width: fit-content;
-}
-.select__people-item::before{
-  /* content: ""; */
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  background: #000000;
-  top: 0;
-  right: 0;
-  transform: rotate(30deg);
-}
-.select__people-item:last-child{
-  margin-left: 0;
-}
-.select__people-item:last-child::before{
-  display: none;
-}
-.select__people-item label{
-  width: 222px;
-  height: 222px;
-  display: block;
-  position: relative;
-  padding: 10px;
-}
-.select__people-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.select__people-item input[type="radio"]{
-  display: none;
-}
-.select__people-item input[type="radio"]:checked + label {
-  background: #755B4E;
-}
-.step-3 h3 {
-  font-weight: 800;
-font-size: 36px;
-color: #755B4E;
-text-align: center;
-}
-.my-choose {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-font-size: 26px;
-text-align: center;
-color: #755B4E;
-}
-
-.my-choose input{
-  border: 1px solid #755B4E;
-border-radius: 6px;
-margin-left: 15px;
-padding: 0 10px;
-height: 46px;
-}
-.my-choose input::placeholder{
-  font-weight: 800;
-font-size: 26px;
-line-height: 35px;
-text-align: center;
-
-color: #755B4E;
-}
-
-.select__thickness-right {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: 132px;
-  grid-auto-columns: 132px;
-}
-
-.ramka {
-  background: #D9D9D9;
-  width: 100%;
-  height: 100%;
-}
-.ramka label {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 5px solid none;
-
-}
-.ramka input{
-  display: none;
-}
-.ramka input[type="radio"]:checked + label {
-border: 5px solid #14620D;
-}
-.ramka .r1 {
-  background: #000000;
-}
-
-.ramka .r2 {
-  background: #755b4e;
-}
-.ramka img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.select__thickness-left.ram {
-  position: relative;
-}
-.preview {
-  position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 100;
-}
-.ramka__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: contain !important;
-  z-index: -1;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .calculator {
+        border: 2px solid black;
+        overflow: hidden;
+    }
+    
+    h2 {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 54px;
+        text-align: center;
+        color: #755b4e;
+    }
+    
+    h6 {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 33px;
+        text-align: center;
+    }
+    
+    p {
+        font-family: "Open Sans";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 18px;
+        text-align: center;
+    }
+    
+    .h2-lower {
+        font-size: 32px;
+    }
+    
+    .w-4 {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(25%, 25%));
+    }
+    
+    .w-4__item {
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .shadow-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 80px;
+        color: white;
+    }
+    
+    input.design__file {
+        display: none;
+    }
+    
+    .preview-div_label {
+        display: block;
+    }
+    /* STYLING FOR STEP-1 */
+    
+    .images__block {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-columns: 300px;
+    }
+    
+    .images__block-item {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .images__block-img {
+        width: 100%;
+        height: 185px;
+    }
+    
+    .images__block-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .images__block-item p {
+        font-weight: 800;
+        font-size: 32px;
+        line-height: normal;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    
+    .select__thickness-sides {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    
+    .select__thickness-left {
+        width: 40%;
+        height: 502px;
+        background: url(UB12161OMB_01_BL.jpg);
+        filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.25));
+    }
+    
+    .select__thickness-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .select__thickness-right {
+        width: 50%;
+    }
+    
+    .select__thickness-img {
+        width: 100%;
+        height: 207px;
+        margin-bottom: 20px;
+    }
+    
+    .select__thickness-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .select__thickness-btns {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .select__thickness-btn {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .select__thickness-btn input {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .select__thickness-btn label {
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 20px;
+        border: 1px solid #755B4E;
+        margin-bottom: 12px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    .select__thickness-btn input[type="radio"]:checked+label {
+        background: #755B4E;
+        color: #FFFFFF;
+    }
+    
+    .select__thickness-btn p {
+        font-weight: 800;
+        font-size: 20px;
+    }
+    
+    .select__thickness-btn.pink {
+        color: #B78177;
+    }
+    
+    .select__thickness-btn.pink p {
+        color: #EBC4BD;
+    }
+    
+    .select__thickness-btn.green p {
+        color: #BDDDDA;
+    }
+    
+    .select__thickness-btn.green {
+        color: #699591;
+    }
+    
+    .select__thickness-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .povernut {
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        color: #755B4E;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    button.povernut {
+        padding-left: 60px;
+        padding-right: 60px;
+        background: none;
+    }
+    
+    .next {
+        background: #33AE64;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 5px 17px;
+    }
+    
+    .select__thickness-input {
+        width: 410px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .select__thickness-input input {
+        width: 100%;
+        background: none;
+        border: none;
+    }
+    
+    .select__thickness-input label {
+        white-space: nowrap;
+        padding-left: 10px;
+    }
+    /* additional__design-img */
+    
+    .additional__design-img {
+        display: flex;
+        height: 260px;
+    }
+    
+    .additional__design-img-r {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    
+    .additional__design-img-r img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .additional__design-img-r input {
+        display: none;
+    }
+    
+    .additional__design-img-r label {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    
+    .additional__design-img-r input[type="checkbox"]:checked+label {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        /* for Safari */
+    }
+    
+    .additional__design-left {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-columns: 80px;
+        grid-auto-rows: 80px;
+    }
+    
+    .additional__design-colorChoose {
+        position: relative;
+        background: url(UB12161OMB_01_BL.jpg);
+        filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.25));
+    }
+    
+    .additional__design-colorChoose label {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .additional__design-colorChoose input {
+        display: none;
+    }
+    
+    .additional__design-colorChoose input[type="radio"]:checked+label {
+        border: 4px solid #333;
+    }
+    
+    .additional__design-colorChoose.red {
+        background: red;
+    }
+    
+    .additional__design-colorChoose.white {
+        background: #fff;
+    }
+    
+    .additional__design-colorChoose.pink {
+        background: pink;
+    }
+    
+    .additional__design-colorChoose.blue {
+        background: blue;
+    }
+    
+    .additional__design-colorChoose.brown {
+        background: brown;
+    }
+    
+    .additional__design-colorChoose.yellow {
+        background: yellow;
+    }
+    
+    .additional__design-colorChoose.pinker {
+        background: #EBC4BD;
+    }
+    
+    .additional__design-colorChoose.purpul {
+        background: purple;
+    }
+    
+    .additional__design-colorChoose.green {
+        background: #33AE64;
+    }
+    
+    .additional__design-colorChoose.orange {
+        background: orange;
+    }
+    
+    .additional__design-colorChoose.none {
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        color: #755B4E;
+    }
+    
+    .additional__design-colorChoose.none {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .additional__design-bottom,
+    .additional__design-right-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+    
+    .additional__design-bottom .left,
+    .additional__design-right {
+        width: 47%;
+    }
+    
+    .additional__design-right .povernut {
+        width: 40%;
+        margin-left: 15px;
+    }
+    
+    .additional__design-right .select__thickness-input.povernut {
+        width: 100%;
+    }
+    
+    .form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 22px;
+    }
+    
+    .form-boxx {
+        position: relative;
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        width: 100%;
+        padding: 5px 10px;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 35px;
+        text-align: center;
+        color: #755B4E;
+        display: flex;
+        white-space: nowrap;
+        align-items: center;
+    }
+    
+    .form-boxx input {
+        width: 100%;
+        height: 100%;
+        padding: 6px 0;
+        border: none;
+    }
+    
+    .form-boxx input[type="radio"] {
+        display: none;
+    }
+    
+    .form-boxx input[type="radio"]:checked+label {
+        color: #33AE64;
+    }
+    
+    .form-boxx input::placeholder {
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 54px;
+        text-align: center;
+        color: rgba(117, 91, 78, 0.5);
+        padding: 5px;
+    }
+    
+    .submit {
+        margin: 22px auto;
+        background: #14620D;
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 10px 40px;
+        display: flex;
+    }
+    
+    .step-8 p,
+    .select__thickness-right p {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 27px;
+        text-align: center;
+        color: #755B4E;
+    }
+    
+    .uploadfile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    .uploadfile-process {
+        color: #755B4E;
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        margin-right: 70px;
+    }
+    
+    .uploadfile-btn {
+        background: #238AC5;
+        border-radius: 6px;
+        padding: 6px 36px;
+        margin-right: 23px;
+        color: #FFFFFF;
+    }
+    
+    .uploadfile img {
+        margin-right: 23px;
+        width: 39px;
+        height: 45px;
+    }
+    
+    .uploadfile button {
+        color: #FFFFFF;
+        background: #33AE64;
+        border-radius: 6px;
+        padding: 6px 20px;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    
+    #size-display {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    /* select__size-item */
+    
+    .select__size-item {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .select__size-item input {
+        display: none;
+    }
+    
+    .select__size-item label {
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+        text-align: center;
+        color: #755B4E;
+        background: #D9D9D9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-direction: column;
+    }
+    
+    .select__size-item input[type="radio"]:checked+label {
+        background: #755B4E;
+        color: #FFFFFF;
+    }
+    
+    .select__size {
+        display: flex;
+    }
+    
+    .select__size-left {
+        margin-right: 10px;
+    }
+    /*  */
+    
+    .select__people {
+        display: flex;
+        align-items: center;
+    }
+    
+    .select__people h3 {
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 35px;
+        text-align: center;
+        color: #755B4E;
+    }
+    
+    .select__people-item {
+        position: relative;
+        margin-right: 30px;
+        width: fit-content;
+    }
+    
+    .select__people-item::before {
+        /* content: ""; */
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        background: #000000;
+        top: 0;
+        right: 0;
+        transform: rotate(30deg);
+    }
+    
+    .select__people-item:last-child {
+        margin-left: 0;
+    }
+    
+    .select__people-item:last-child::before {
+        display: none;
+    }
+    
+    .select__people-item label {
+        width: 222px;
+        height: 222px;
+        display: block;
+        position: relative;
+        padding: 10px;
+    }
+    
+    .select__people-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .select__people-item input[type="radio"] {
+        display: none;
+    }
+    
+    .select__people-item input[type="radio"]:checked+label {
+        background: #755B4E;
+    }
+    
+    .step-3 h3 {
+        font-weight: 800;
+        font-size: 36px;
+        color: #755B4E;
+        text-align: center;
+    }
+    
+    .my-choose {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 26px;
+        text-align: center;
+        color: #755B4E;
+    }
+    
+    .my-choose input {
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        margin-left: 15px;
+        padding: 0 10px;
+        height: 46px;
+    }
+    
+    .my-choose input::placeholder {
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 35px;
+        text-align: center;
+        color: #755B4E;
+    }
+    
+    .select__thickness-right {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: 132px;
+        grid-auto-columns: 132px;
+    }
+    
+    .ramka {
+        background: #D9D9D9;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .ramka label {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 5px solid none;
+    }
+    
+    .ramka input {
+        display: none;
+    }
+    
+    .ramka input[type="radio"]:checked+label {
+        border: 5px solid #14620D;
+    }
+    
+    .ramka .r1 {
+        background: #000000;
+    }
+    
+    .ramka .r2 {
+        background: #755b4e;
+    }
+    
+    .ramka img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .select__thickness-left.ram {
+        position: relative;
+    }
+    
+    .preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+    }
+    
+    .ramka__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: contain !important;
+        z-index: -1;
+    }
+    /* /******************************************************************************************************************** */
+    /* grid */
+    
+    .grid {
+        /* width: 738px;
+        margin: 0 auto;
+        margin-top: 200px; */
+        display: flex;
+        align-items: center;
+    }
+    
+    .grid__top {
+        display: flex;
+        align-items: end;
+    }
+    
+    .grid__item {
+        background: #D9D9D9;
+        border: 2px solid #000000;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        color: #755B4E;
+        width: fit-content;
+        /* padding: 12px; */
+        /* white-space: nowrap; */
+        cursor: pointer;
+    }
+    
+    .grid__top .grid__item {
+        margin-left: 15px;
+        width: 64px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .grid__top .grid__item:nth-child(2) {
+        width: 86.44px;
+        height: 85.27px;
+    }
+    
+    .grid__top .grid__item:nth-child(3) {
+        width: 105.13px;
+        height: 85.27px;
+    }
+    
+    .grid__top .grid__item:nth-child(4) {
+        width: 126.16px;
+        height: 85.27px;
+    }
+    
+    .grid__top .grid__item:nth-child(5) {
+        width: 165.87px;
+        height: 124.99px;
+    }
+    /* grid__bottom */
+    
+    .grid__bottom {
+        display: flex;
+        align-items: start;
+        margin-top: 15px;
+    }
+    
+    .grid__bottom .grid__item {
+        margin-right: 15px;
+        width: 64.25px;
+        height: 85.27px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .grid__bottom .grid__item:nth-child(2) {
+        width: 103.96px;
+        height: 103.96px;
+    }
+    
+    .grid__bottom .grid__item:nth-child(3) {
+        width: 124.99px;
+        height: 124.99px;
+    }
+    
+    .grid__bottom .grid__item:nth-child(4) {
+        width: 123.82px;
+        height: 185.73px;
+    }
+    
+    .grid__bottom .grid__item:nth-child(5) {
+        width: 146.01px;
+        height: 144.85px;
+        margin-right: 0;
+    }
+    /* grid__right */
+    
+    .grid__right .grid__item {
+        width: 105.13px;
+        height: 144.85px;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .grid__img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    
+    .grid__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    
+    .dalee {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 26px;
+        text-align: center;
+        color: #755B4E;
+        margin-top: 30px;
+    }
+    
+    .dalee p {
+        margin-right: 15px;
+        white-space: nowrap;
+    }
+    
+    .dalee input {
+        border: 1px solid #755B4E;
+        border-radius: 6px;
+        padding: 10px;
+        width: 90px;
+    }
+    
+    .dalee input::placeholder,
+    .dalee p {
+        font-weight: bold;
+        font-size: 26px;
+        color: #755B4E;
+    }
+    
+    .daleewidth {
+        width: 100% !important;
+        margin-left: 15px;
+    }
+    /* ------------------------------------------------------------------------------------------------------------------------------------- */
+    
+    .grid-2 {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .grid__top-2 {
+        display: flex;
+        justify-content: end;
+        margin-right: 10px;
+    }
+    
+    .grid__top-2 .grid__item {
+        width: 64.25px;
+        height: 85.27px;
+        margin-left: 10px;
+    }
+    
+    .grid__top-2 .grid__item:nth-child(1) {
+        margin-left: 50px;
+    }
+    
+    .grid__top-2 .grid__item:nth-child(2) {
+        width: 86.44px;
+    }
+    
+    .grid__top-2 .grid__item:nth-child(3) {
+        width: 105.13px;
+    }
+    
+    .grid__top-2 .grid__item:nth-child(4) {
+        width: 126.16px;
+    }
+    /* ////////////////////////////////////////////////////////////////////////// */
+    
+    .grid__bottom-2 {
+        display: flex;
+        margin-top: 10px;
+    }
+    
+    .grid__bottom-2-1,
+    .grid__bottom-2-2,
+    .grid__bottom-2-3 {
+        margin-right: 10px;
+    }
+    
+    .grid__bottom-2-1 .grid__item:nth-child(1) {
+        width: 124.99px;
+        height: 124.99px;
+        margin-bottom: 10px;
+    }
+    
+    .grid__bottom-2-1 .grid__item:nth-child(2) {
+        width: 103.96px;
+        height: 103.96px;
+        margin-left: 20px;
+    }
+    
+    .grid__bottom-2-2 .grid__item:nth-child(1) {
+        width: 165.87px;
+        height: 165.87px;
+        margin-bottom: 10px;
+    }
+    
+    .grid__bottom-2-2 .grid__item:nth-child(2) {
+        width: 165.87px;
+        height: 124.99px;
+    }
+    
+    .grid__bottom-2-3 .grid__item:nth-child(1) {
+        width: 205.59px;
+        height: 287.36px;
+    }
+    /* ////////////////////////////////////////////////////////////////////////// */
+    
+    .grid__right-2 {}
+    
+    .grid__right-2-1 {
+        display: flex;
+        align-items: end;
+        margin-bottom: 10px;
+    }
+    
+    .grid__right-2-1 .grid__item:nth-child(1) {
+        width: 247.64px;
+        height: 185.73px;
+        margin-right: 10px;
+    }
+    
+    .grid__right-2-1 .grid__item:nth-child(2) {
+        width: 105.13px;
+        height: 144.85px;
+    }
+    
+    .grid__right-2-2 {
+        display: flex;
+    }
+    
+    .grid__right-2-2 .grid__item:nth-child(1) {
+        width: 123.82px;
+        height: 185.73px;
+        margin-right: 10px;
+    }
+    
+    .grid__right-2-2 .grid__item:nth-child(2) {
+        width: 146.01px;
+        height: 144.85px;
+    }
 </style>
-
